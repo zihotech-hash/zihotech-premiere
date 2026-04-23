@@ -65,3 +65,10 @@ export const getRouter = () => {
 
   return router;
 };
+
+// Register the router instance for type safety across <Link>, useNavigate, etc.
+declare module "@tanstack/react-router" {
+  interface Register {
+    router: ReturnType<typeof getRouter>;
+  }
+}
