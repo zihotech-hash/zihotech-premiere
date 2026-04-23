@@ -4,28 +4,18 @@ import { ArrowRight } from "lucide-react";
 import { FadeUp, Section, SectionHeading } from "@/components/Section";
 import { CTAButton } from "@/components/CTAButton";
 import { SERVICES } from "@/components/ServiceCard";
+import { useDocumentMeta } from "@/hooks/use-document-meta";
 
 export const Route = createFileRoute("/services")({
-  head: () => ({
-    meta: [
-      { title: "Services — ZihoTech" },
-      {
-        name: "description",
-        content:
-          "Web, mobile, AI development, AI engineering, AI ops, and custom software — built by senior engineers at ZihoTech.",
-      },
-      { property: "og:title", content: "Services — ZihoTech" },
-      {
-        property: "og:description",
-        content:
-          "Six core capabilities: Web, Mobile, AI Development, AI Engineering, AI Ops, and Custom Software.",
-      },
-    ],
-  }),
   component: ServicesPage,
 });
 
 function ServicesPage() {
+  useDocumentMeta({
+    title: "Services — ZihoTech",
+    description:
+      "Web, mobile, AI development, AI engineering, AI ops, and custom software — built by senior engineers at ZihoTech.",
+  });
   return (
     <>
       <section className="relative pt-20 pb-12 md:pt-28 md:pb-16 overflow-hidden">

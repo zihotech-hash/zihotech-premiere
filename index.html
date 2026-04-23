@@ -1,0 +1,50 @@
+<!doctype html>
+<html lang="en" class="dark">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="theme-color" content="#0A0F1E" />
+    <title>ZihoTech — Enterprise Software & AI Engineering</title>
+    <meta
+      name="description"
+      content="ZihoTech builds enterprise-grade web, mobile, and AI solutions for startups and businesses that need to scale — fast."
+    />
+    <meta name="author" content="ZihoTech" />
+    <meta property="og:title" content="ZihoTech — Enterprise Software & AI Engineering" />
+    <meta
+      property="og:description"
+      content="Web, mobile, and AI engineering for businesses that need to ship at enterprise quality."
+    />
+    <meta property="og:type" content="website" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:site" content="@ZihoTech" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="anonymous" />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap"
+    />
+    <script>
+      // Theme bootstrap to avoid FOUC
+      (function () {
+        try {
+          var k = "zihotech-theme";
+          var s = localStorage.getItem(k);
+          var t =
+            s === "light" || s === "dark"
+              ? s
+              : window.matchMedia("(prefers-color-scheme: light)").matches
+                ? "light"
+                : "dark";
+          var r = document.documentElement;
+          r.classList.toggle("light", t === "light");
+          r.classList.toggle("dark", t === "dark");
+        } catch (e) {}
+      })();
+    </script>
+  </head>
+  <body>
+    <div id="root"></div>
+    <script type="module" src="/src/main.tsx"></script>
+  </body>
+</html>

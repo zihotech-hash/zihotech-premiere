@@ -3,23 +3,9 @@ import { motion } from "framer-motion";
 import { ArrowRight, Linkedin, Award, Rocket, Heart } from "lucide-react";
 import { FadeUp, Section, SectionHeading } from "@/components/Section";
 import { CTAButton } from "@/components/CTAButton";
+import { useDocumentMeta } from "@/hooks/use-document-meta";
 
 export const Route = createFileRoute("/about")({
-  head: () => ({
-    meta: [
-      { title: "About — ZihoTech" },
-      {
-        name: "description",
-        content:
-          "ZihoTech was founded to build software that actually works. A lean, senior team of engineers and AI specialists.",
-      },
-      { property: "og:title", content: "About — ZihoTech" },
-      {
-        property: "og:description",
-        content: "Built to solve hard problems. Senior engineers, end-to-end ownership, no fluff.",
-      },
-    ],
-  }),
   component: AboutPage,
 });
 
@@ -56,6 +42,11 @@ const VALUES = [
 ];
 
 function AboutPage() {
+  useDocumentMeta({
+    title: "About — ZihoTech",
+    description:
+      "ZihoTech was founded to build software that actually works. A lean, senior team of engineers and AI specialists.",
+  });
   return (
     <>
       <section className="relative pt-20 pb-10 md:pt-28 md:pb-20 overflow-hidden">

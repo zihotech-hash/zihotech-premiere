@@ -1,6 +1,6 @@
-import { Outlet, Link, createRootRoute, HeadContent, Scripts } from "@tanstack/react-router";
+import { Outlet, Link, createRootRoute } from "@tanstack/react-router";
+import { useEffect } from "react";
 
-import appCss from "../styles.css?url";
 import { Navbar } from "@/components/Navbar";
 import { Footer } from "@/components/Footer";
 import { SmoothScroll } from "@/components/SmoothScroll";
@@ -29,67 +29,27 @@ function NotFoundComponent() {
 }
 
 export const Route = createRootRoute({
-  head: () => ({
-    meta: [
-      { charSet: "utf-8" },
-      { name: "viewport", content: "width=device-width, initial-scale=1" },
-      { title: "ZihoTech — Enterprise Software & AI Engineering" },
-      {
-        name: "description",
-        content:
-          "ZihoTech builds enterprise-grade web, mobile, and AI solutions for startups and businesses that need to scale — fast.",
-      },
-      { name: "author", content: "ZihoTech" },
-      { name: "theme-color", content: "#0A0F1E" },
-      { property: "og:title", content: "ZihoTech — Enterprise Software & AI Engineering" },
-      {
-        property: "og:description",
-        content:
-          "Web, mobile, and AI engineering for businesses that need to ship at enterprise quality.",
-      },
-      { property: "og:type", content: "website" },
-      { name: "twitter:card", content: "summary_large_image" },
-      { name: "twitter:site", content: "@ZihoTech" },
-    ],
-    links: [
-      { rel: "stylesheet", href: appCss },
-      { rel: "preconnect", href: "https://fonts.googleapis.com" },
-      { rel: "preconnect", href: "https://fonts.gstatic.com", crossOrigin: "anonymous" },
-      {
-        rel: "stylesheet",
-        href: "https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap",
-      },
-    ],
-  }),
-  shellComponent: RootShell,
   component: RootComponent,
   notFoundComponent: NotFoundComponent,
 });
 
-function RootShell({ children }: { children: React.ReactNode }) {
-  return (
-    <html lang="en" className="dark">
-      <head>
-        <HeadContent />
-        {/*
-         * Theme bootstrap: read the saved/system theme synchronously BEFORE
-         * React hydrates so the page never flashes the wrong palette.
-         */}
-        <script
-          dangerouslySetInnerHTML={{
-            __html: `(function(){try{var k='zihotech-theme';var s=localStorage.getItem(k);var t=s==='light'||s==='dark'?s:(window.matchMedia('(prefers-color-scheme: light)').matches?'light':'dark');var r=document.documentElement;r.classList.toggle('light',t==='light');r.classList.toggle('dark',t==='dark');}catch(e){}})();`,
-          }}
-        />
-      </head>
-      <body>
-        {children}
-        <Scripts />
-      </body>
-    </html>
-  );
+/**
+ * Update <title> + meta description per route. In SPA mode (Vercel-friendly)
+ * we manage head tags imperatively. Each route file passes its own title
+ * via window event or here we read from document — but to keep things simple
+ * each page sets its own document.title via its component.
+ */
+function useDefaultDocumentMeta() {
+  useEffect(() => {
+    if (typeof document === "undefined") return;
+    if (!document.title) {
+      document.title = "ZihoTech — Enterprise Software & AI Engineering";
+    }
+  }, []);
 }
 
 function RootComponent() {
+  useDefaultDocumentMeta();
   return (
     <ThemeProvider>
       <SmoothScroll />

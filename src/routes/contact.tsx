@@ -13,23 +13,9 @@ import {
 } from "lucide-react";
 import { FadeUp, Section } from "@/components/Section";
 import { SITE } from "@/lib/site";
+import { useDocumentMeta } from "@/hooks/use-document-meta";
 
 export const Route = createFileRoute("/contact")({
-  head: () => ({
-    meta: [
-      { title: "Contact — ZihoTech" },
-      {
-        name: "description",
-        content:
-          "Tell us about your project. We respond within 24 hours, US/EU/UK timezones.",
-      },
-      { property: "og:title", content: "Contact — ZihoTech" },
-      {
-        property: "og:description",
-        content: "Let's build something together. Contact ZihoTech.",
-      },
-    ],
-  }),
   component: ContactPage,
 });
 
@@ -62,6 +48,11 @@ const formSchema = z.object({
 type FormErrors = Partial<Record<keyof z.infer<typeof formSchema>, string>>;
 
 function ContactPage() {
+  useDocumentMeta({
+    title: "Contact — ZihoTech",
+    description:
+      "Tell us about your project. We respond within 24 hours, US/EU/UK timezones.",
+  });
   const [errors, setErrors] = useState<FormErrors>({});
   const [submitted, setSubmitted] = useState(false);
 
