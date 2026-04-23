@@ -57,7 +57,8 @@ export function Navbar() {
           ))}
         </div>
 
-        <div className="hidden md:block">
+        <div className="hidden md:flex items-center gap-3">
+          <ThemeToggle />
           <Link
             to="/contact"
             className="inline-flex items-center justify-center rounded-lg bg-brand-gradient px-5 py-2.5 text-sm font-semibold text-white shadow-md hover:glow-primary transition-all duration-300"
@@ -66,13 +67,16 @@ export function Navbar() {
           </Link>
         </div>
 
-        <button
-          aria-label="Toggle menu"
-          className="md:hidden text-foreground p-2 -mr-2"
-          onClick={() => setOpen((v) => !v)}
-        >
-          {open ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
-        </button>
+        <div className="md:hidden flex items-center gap-2">
+          <ThemeToggle />
+          <button
+            aria-label="Toggle menu"
+            className="text-foreground p-2 -mr-2"
+            onClick={() => setOpen((v) => !v)}
+          >
+            {open ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
+          </button>
+        </div>
       </nav>
 
       <AnimatePresence>
