@@ -177,11 +177,21 @@
     box-shadow: var(--shadow-glow-strong);
   }
 
+  /*
+   * Velocity-driven motion blur. The `--scroll-blur` variable is set per
+   * frame by SmoothScroll based on Lenis scroll velocity. We use `will-change`
+   * to promote the layer so the blur is GPU-composited and doesn't repaint
+   * the surrounding layout each frame.
+   */
   .scroll-blur {
-    transition: filter 0.25s ease-out;
+    filter: blur(var(--scroll-blur, 0px));
+    will-change: filter;
   }
-  .is-scrolling .scroll-blur {
-    filter: blur(1.5px);
+
+  @media (prefers-reduced-motion: reduce) {
+    .scroll-blur {
+      filter: none;
+    }
   }
 
   .marquee {
