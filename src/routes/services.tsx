@@ -11,6 +11,11 @@ export const Route = createFileRoute("/services")({
 });
 
 function ServicesPage() {
+  useDocumentMeta({
+    title: "Services — ZihoTech",
+    description:
+      "Web, mobile, AI development, AI engineering, AI ops, and custom software — built by senior engineers at ZihoTech.",
+  });
   return (
     <>
       <section className="relative pt-20 pb-12 md:pt-28 md:pb-16 overflow-hidden">

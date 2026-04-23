@@ -42,6 +42,11 @@ const VALUES = [
 ];
 
 function AboutPage() {
+  useDocumentMeta({
+    title: "About — ZihoTech",
+    description:
+      "ZihoTech was founded to build software that actually works. A lean, senior team of engineers and AI specialists.",
+  });
   return (
     <>
       <section className="relative pt-20 pb-10 md:pt-28 md:pb-20 overflow-hidden">

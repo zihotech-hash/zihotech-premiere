@@ -56,6 +56,11 @@ const TESTIMONIALS = [
 ];
 
 function HomePage() {
+  useDocumentMeta({
+    title: "ZihoTech — Enterprise Software & AI Engineering",
+    description:
+      "ZihoTech delivers enterprise-grade web, mobile, and AI solutions for startups and businesses that need to scale — fast.",
+  });
   return (
     <>
       {/* HERO */}

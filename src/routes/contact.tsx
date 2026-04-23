@@ -48,6 +48,11 @@ const formSchema = z.object({
 type FormErrors = Partial<Record<keyof z.infer<typeof formSchema>, string>>;
 
 function ContactPage() {
+  useDocumentMeta({
+    title: "Contact — ZihoTech",
+    description:
+      "Tell us about your project. We respond within 24 hours, US/EU/UK timezones.",
+  });
   const [errors, setErrors] = useState<FormErrors>({});
   const [submitted, setSubmitted] = useState(false);
 

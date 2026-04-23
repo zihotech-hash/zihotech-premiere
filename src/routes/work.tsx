@@ -15,6 +15,11 @@ const FILTERS = ["All", "Web", "Mobile", "AI"] as const;
 type Filter = (typeof FILTERS)[number];
 
 function WorkPage() {
+  useDocumentMeta({
+    title: "Our Work — ZihoTech Case Studies",
+    description:
+      "Real problems. Real solutions. Real results. Selected case studies from ZihoTech across AI, web, and mobile.",
+  });
   const [filter, setFilter] = useState<Filter>("All");
   const visible: CaseStudy[] =
     filter === "All" ? CASE_STUDIES : CASE_STUDIES.filter((c) => c.type === filter);
