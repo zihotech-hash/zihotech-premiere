@@ -13,24 +13,9 @@ import { FadeUp, Section, SectionHeading } from "@/components/Section";
 import { CTAButton } from "@/components/CTAButton";
 import { SERVICES, ServiceCard } from "@/components/ServiceCard";
 import { CASE_STUDIES } from "@/lib/case-studies";
+import { useDocumentMeta } from "@/hooks/use-document-meta";
 
 export const Route = createFileRoute("/")({
-  head: () => ({
-    meta: [
-      { title: "ZihoTech — Enterprise Software & AI Engineering" },
-      {
-        name: "description",
-        content:
-          "ZihoTech delivers enterprise-grade web, mobile, and AI solutions for startups and businesses that need to scale — fast.",
-      },
-      { property: "og:title", content: "ZihoTech — Enterprise Software & AI Engineering" },
-      {
-        property: "og:description",
-        content:
-          "We build the software that moves your business forward. Web, mobile, and AI engineering across US · EU · UK.",
-      },
-    ],
-  }),
   component: HomePage,
 });
 

@@ -5,24 +5,9 @@ import { ArrowRight } from "lucide-react";
 import { FadeUp, Section } from "@/components/Section";
 import { CTAButton } from "@/components/CTAButton";
 import { CASE_STUDIES, type CaseStudy } from "@/lib/case-studies";
+import { useDocumentMeta } from "@/hooks/use-document-meta";
 
 export const Route = createFileRoute("/work")({
-  head: () => ({
-    meta: [
-      { title: "Our Work — ZihoTech Case Studies" },
-      {
-        name: "description",
-        content:
-          "Real problems. Real solutions. Real results. Selected case studies from ZihoTech across AI, web, and mobile.",
-      },
-      { property: "og:title", content: "Our Work — ZihoTech Case Studies" },
-      {
-        property: "og:description",
-        content:
-          "Featured engagements across FinTech, Healthcare, Logistics, and LegalTech.",
-      },
-    ],
-  }),
   component: WorkPage,
 });
 
