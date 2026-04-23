@@ -4,6 +4,7 @@ import appCss from "../styles.css?url";
 import { Navbar } from "@/components/Navbar";
 import { Footer } from "@/components/Footer";
 import { SmoothScroll } from "@/components/SmoothScroll";
+import { ThemeProvider } from "@/components/ThemeProvider";
 
 function NotFoundComponent() {
   return (
@@ -67,9 +68,18 @@ export const Route = createRootRoute({
 
 function RootShell({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="en">
+    <html lang="en" className="dark">
       <head>
         <HeadContent />
+        {/*
+         * Theme bootstrap: read the saved/system theme synchronously BEFORE
+         * React hydrates so the page never flashes the wrong palette.
+         */}
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `(function(){try{var k='zihotech-theme';var s=localStorage.getItem(k);var t=s==='light'||s==='dark'?s:(window.matchMedia('(prefers-color-scheme: light)').matches?'light':'dark');var r=document.documentElement;r.classList.toggle('light',t==='light');r.classList.toggle('dark',t==='dark');}catch(e){}})();`,
+          }}
+        />
       </head>
       <body>
         {children}
@@ -81,13 +91,13 @@ function RootShell({ children }: { children: React.ReactNode }) {
 
 function RootComponent() {
   return (
-    <>
+    <ThemeProvider>
       <SmoothScroll />
       <Navbar />
       <main className="min-h-screen pt-16 md:pt-20">
         <Outlet />
       </main>
       <Footer />
-    </>
+    </ThemeProvider>
   );
 }
