@@ -45,7 +45,6 @@ function WorkPage() {
           "@type": "ListItem",
           position: i + 1,
           name: c.name,
-          url: c.url,
         })),
       },
     },
