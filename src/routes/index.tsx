@@ -1,5 +1,6 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { motion } from "framer-motion";
+import { useState } from "react";
 import {
   ArrowRight,
   ArrowDown,
@@ -11,11 +12,13 @@ import {
   Gauge,
   ShieldCheck,
   Users2,
+  Eye,
 } from "lucide-react";
 import { FadeUp, Section, SectionHeading } from "@/components/Section";
 import { CTAButton } from "@/components/CTAButton";
 import { Typewriter } from "@/components/Typewriter";
-import { CASE_STUDIES } from "@/lib/case-studies";
+import { CASE_STUDIES, type CaseStudy } from "@/lib/case-studies";
+import { ProjectDialog } from "@/components/ProjectDialog";
 import { useDocumentMeta } from "@/hooks/use-document-meta";
 import { SITE } from "@/lib/site";
 import heroVideo from "../../public/hero-bg.mp4.asset.json";
