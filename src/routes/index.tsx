@@ -290,26 +290,28 @@ function HomePage() {
         />
         <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
           {CASE_STUDIES.slice(0, 3).map((c, i) => (
-            <motion.a
+            <motion.button
               key={c.slug}
-              href={c.url}
-              target="_blank"
-              rel="noreferrer"
+              type="button"
+              onClick={() => setActive(c)}
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, margin: "-60px" }}
               transition={{ duration: 0.6, delay: i * 0.08, ease: [0.22, 1, 0.36, 1] }}
               whileHover={{ y: -4 }}
-              className="group rounded-2xl glass p-7 flex flex-col hover:border-primary/40 transition-all"
+              className="group text-left rounded-2xl glass p-6 md:p-7 flex flex-col hover:border-primary/40 transition-all focus:outline-none focus:ring-2 focus:ring-secondary/50"
             >
-              <div className="flex items-center gap-2 text-[11px] uppercase tracking-[0.18em] text-muted-foreground">
-                <span className="rounded-full border border-border px-2.5 py-0.5">{c.industry}</span>
-                <span className="rounded-full bg-secondary/15 border border-secondary/40 px-2.5 py-0.5 text-secondary font-semibold">
-                  {c.type}
-                </span>
+              <div className="flex items-center justify-between gap-2">
+                <div className="flex flex-wrap items-center gap-2 text-[11px] uppercase tracking-[0.18em] text-muted-foreground">
+                  <span className="rounded-full border border-border px-2.5 py-0.5">{c.industry}</span>
+                  <span className="rounded-full bg-secondary/15 border border-secondary/40 px-2.5 py-0.5 text-secondary font-semibold">
+                    {c.type}
+                  </span>
+                </div>
+                <Eye className="h-4 w-4 text-muted-foreground group-hover:text-secondary transition-colors shrink-0" />
               </div>
               <h3 className="mt-5 text-2xl font-bold tracking-tight">{c.name}</h3>
-              <p className="mt-3 text-sm text-muted-foreground leading-relaxed">{c.problem}</p>
+              <p className="mt-3 text-sm text-muted-foreground leading-relaxed flex-1">{c.problem}</p>
               <p className="mt-5 text-base font-semibold text-gradient">{c.result}</p>
               <div className="mt-5 flex flex-wrap gap-1.5">
                 {c.stack.map((s) => (
@@ -319,9 +321,9 @@ function HomePage() {
                 ))}
               </div>
               <span className="mt-6 inline-flex items-center gap-1.5 text-sm font-medium text-secondary group-hover:gap-2.5 transition-all">
-                Visit live site <ArrowRight className="h-4 w-4" />
+                View case study <ArrowRight className="h-4 w-4" />
               </span>
-            </motion.a>
+            </motion.button>
           ))}
         </div>
         <div className="mt-10 text-center">
@@ -332,6 +334,8 @@ function HomePage() {
             See all {CASE_STUDIES.length} projects <ArrowRight className="h-4 w-4" />
           </Link>
         </div>
+
+        <ProjectDialog project={active} onClose={() => setActive(null)} />
       </Section>
 
       {/* TESTIMONIALS */}
