@@ -1,9 +1,11 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { motion } from "framer-motion";
-import { ArrowUpRight } from "lucide-react";
+import { Eye } from "lucide-react";
+import { useState } from "react";
 import { FadeUp, Section } from "@/components/Section";
 import { CTAButton } from "@/components/CTAButton";
-import { CASE_STUDIES } from "@/lib/case-studies";
+import { CASE_STUDIES, type CaseStudy } from "@/lib/case-studies";
+import { ProjectDialog } from "@/components/ProjectDialog";
 import { useDocumentMeta } from "@/hooks/use-document-meta";
 import { SITE } from "@/lib/site";
 
