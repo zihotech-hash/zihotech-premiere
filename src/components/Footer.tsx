@@ -6,6 +6,7 @@ const NAV = [
   { to: "/", label: "Home" },
   { to: "/services", label: "Services" },
   { to: "/work", label: "Work" },
+  { to: "/mission", label: "Mission" },
   { to: "/about", label: "About" },
   { to: "/contact", label: "Contact" },
 ] as const;
@@ -16,8 +17,9 @@ export function Footer() {
       <div className="mx-auto max-w-7xl px-6 md:px-10 py-14 md:py-20">
         <div className="grid gap-10 md:grid-cols-3">
           <div>
-            <Link to="/" className="text-2xl font-extrabold">
-              <span className="text-gradient">ZihoTech</span>
+            <Link to="/" className="flex items-center gap-2.5">
+              <img src="/logo.png" alt="ZihoTech logo" width={36} height={36} className="h-9 w-9 object-contain" />
+              <span className="text-2xl font-extrabold text-gradient">ZihoTech</span>
             </Link>
             <p className="mt-4 text-sm text-muted-foreground max-w-xs leading-relaxed">
               {SITE.tagline}
