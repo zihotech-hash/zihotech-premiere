@@ -74,6 +74,8 @@ const TESTIMONIALS = [
 ];
 
 function HomePage() {
+  const [active, setActive] = useState<CaseStudy | null>(null);
+
   useDocumentMeta({
     title: "ZihoTech — AI-First Software Engineering for Ambitious Businesses",
     description:
