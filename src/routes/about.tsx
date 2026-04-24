@@ -43,9 +43,19 @@ const VALUES = [
 
 function AboutPage() {
   useDocumentMeta({
-    title: "About — ZihoTech",
+    title: "About ZihoTech — Senior AI & Software Engineering Team",
     description:
-      "ZihoTech was founded to build software that actually works. A lean, senior team of engineers and AI specialists.",
+      "ZihoTech (Ziho Technologies) was founded to build software that actually works. A lean, senior team of AI engineers and product builders serving US, EU, and UK.",
+    keywords: [
+      "About ZihoTech",
+      "Ziho Tech team",
+      "Ziho Technologies",
+      "AI engineering team",
+      "senior software engineers",
+      "AI consultancy team",
+      "AIOps team",
+    ],
+    path: "/about",
   });
   return (
     <>
