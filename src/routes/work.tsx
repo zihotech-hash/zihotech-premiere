@@ -14,6 +14,8 @@ export const Route = createFileRoute("/work")({
 });
 
 function WorkPage() {
+  const [active, setActive] = useState<CaseStudy | null>(null);
+
   useDocumentMeta({
     title: "Our Work — AI, Web & Mobile Case Studies | ZihoTech",
     description:
