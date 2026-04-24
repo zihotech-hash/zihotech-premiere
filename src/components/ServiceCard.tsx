@@ -22,26 +22,6 @@ export type Service = {
 
 export const SERVICES: Service[] = [
   {
-    slug: "web",
-    title: "Web Development",
-    short: "Scalable, fast, modern web applications built for performance.",
-    long:
-      "We design and ship production web platforms that hold up under real traffic. From marketing sites to complex internal dashboards, we focus on architecture, performance, and developer experience so your team can move fast for years — not weeks.",
-    audience: "For startups launching MVPs and enterprises modernizing legacy systems.",
-    stack: ["React", "Next.js", "Node.js", "PostgreSQL", "REST", "GraphQL"],
-    Icon: Code2,
-  },
-  {
-    slug: "mobile",
-    title: "Mobile App Development",
-    short: "Cross-platform iOS & Android apps that users love.",
-    long:
-      "We build cross-platform mobile apps that feel native on both iOS and Android. Offline-first patterns, push notifications, secure auth, and tight integrations with your existing backend — shipped through real CI/CD, not zip files.",
-    audience: "For consumer products, internal tools, and B2B field applications.",
-    stack: ["React Native", "Expo", "TypeScript", "Firebase", "REST APIs"],
-    Icon: Smartphone,
-  },
-  {
     slug: "ai-dev",
     title: "AI Development",
     short: "Custom AI models, LLM integrations, and intelligent automation.",
@@ -70,6 +50,26 @@ export const SERVICES: Service[] = [
     audience: "For teams running models in production and needing real reliability.",
     stack: ["Docker", "GCP", "AWS", "Kubernetes", "MLflow", "Prometheus"],
     Icon: Cloud,
+  },
+  {
+    slug: "web",
+    title: "Web Development",
+    short: "Scalable, fast, modern web applications built for performance.",
+    long:
+      "We design and ship production web platforms that hold up under real traffic. From marketing sites to complex internal dashboards, we focus on architecture, performance, and developer experience so your team can move fast for years — not weeks.",
+    audience: "For startups launching MVPs and enterprises modernizing legacy systems.",
+    stack: ["React", "Next.js", "Node.js", "PostgreSQL", "REST", "GraphQL"],
+    Icon: Code2,
+  },
+  {
+    slug: "mobile",
+    title: "Mobile App Development",
+    short: "Cross-platform iOS & Android apps that users love.",
+    long:
+      "We build cross-platform mobile apps that feel native on both iOS and Android. Offline-first patterns, push notifications, secure auth, and tight integrations with your existing backend — shipped through real CI/CD, not zip files.",
+    audience: "For consumer products, internal tools, and B2B field applications.",
+    stack: ["React Native", "Expo", "TypeScript", "Firebase", "REST APIs"],
+    Icon: Smartphone,
   },
   {
     slug: "custom",

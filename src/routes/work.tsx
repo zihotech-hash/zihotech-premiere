@@ -1,9 +1,11 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { motion } from "framer-motion";
-import { ArrowUpRight } from "lucide-react";
+import { Eye } from "lucide-react";
+import { useState } from "react";
 import { FadeUp, Section } from "@/components/Section";
 import { CTAButton } from "@/components/CTAButton";
-import { CASE_STUDIES } from "@/lib/case-studies";
+import { CASE_STUDIES, type CaseStudy } from "@/lib/case-studies";
+import { ProjectDialog } from "@/components/ProjectDialog";
 import { useDocumentMeta } from "@/hooks/use-document-meta";
 import { SITE } from "@/lib/site";
 
@@ -12,6 +14,8 @@ export const Route = createFileRoute("/work")({
 });
 
 function WorkPage() {
+  const [active, setActive] = useState<CaseStudy | null>(null);
+
   useDocumentMeta({
     title: "Our Work — AI, Web & Mobile Case Studies | ZihoTech",
     description:
@@ -41,7 +45,6 @@ function WorkPage() {
           "@type": "ListItem",
           position: i + 1,
           name: c.name,
-          url: c.url,
         })),
       },
     },
@@ -65,9 +68,9 @@ function WorkPage() {
           </FadeUp>
           <FadeUp delay={0.12}>
             <p className="mt-5 text-base md:text-lg text-muted-foreground max-w-2xl">
-              {CASE_STUDIES.length} live engagements across AI, generative tools,
-              marketplaces, healthcare, and Web3. Click any project to visit the
-              live site.
+              {CASE_STUDIES.length} engagements across AI, generative tools,
+              marketplaces, healthcare, and Web3. Click any project to see the
+              full case study.
             </p>
           </FadeUp>
         </div>
@@ -76,20 +79,19 @@ function WorkPage() {
       <Section className="pt-4 md:pt-8">
         <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
           {CASE_STUDIES.map((c, i) => (
-            <motion.a
+            <motion.button
               key={c.slug}
-              href={c.url}
-              target="_blank"
-              rel="noreferrer"
+              type="button"
+              onClick={() => setActive(c)}
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, margin: "-60px" }}
               transition={{ duration: 0.55, delay: (i % 6) * 0.05, ease: [0.22, 1, 0.36, 1] }}
               whileHover={{ y: -4 }}
-              className="group relative flex flex-col rounded-2xl glass p-7 md:p-8 hover:border-primary/40 transition-colors"
+              className="group relative flex flex-col text-left rounded-2xl glass p-6 md:p-8 hover:border-primary/40 transition-colors focus:outline-none focus:ring-2 focus:ring-secondary/50"
             >
               <div className="flex items-center justify-between gap-3">
-                <div className="flex items-center gap-2 text-[11px] uppercase tracking-[0.18em] text-muted-foreground">
+                <div className="flex flex-wrap items-center gap-2 text-[11px] uppercase tracking-[0.18em] text-muted-foreground">
                   <span className="rounded-full border border-border px-2.5 py-0.5">{c.industry}</span>
                   <span
                     className={
@@ -101,7 +103,7 @@ function WorkPage() {
                     {c.type}
                   </span>
                 </div>
-                <ArrowUpRight className="h-4 w-4 text-muted-foreground group-hover:text-secondary group-hover:-translate-y-0.5 group-hover:translate-x-0.5 transition-all" />
+                <Eye className="h-4 w-4 text-muted-foreground group-hover:text-secondary transition-colors shrink-0" />
               </div>
 
               <h2 className="mt-5 text-2xl md:text-[1.7rem] font-bold tracking-tight">
@@ -130,10 +132,16 @@ function WorkPage() {
                   </span>
                 ))}
               </div>
-            </motion.a>
+
+              <span className="mt-5 inline-flex items-center gap-1.5 text-xs font-medium text-secondary group-hover:gap-2.5 transition-all">
+                View case study →
+              </span>
+            </motion.button>
           ))}
         </div>
       </Section>
+
+      <ProjectDialog project={active} onClose={() => setActive(null)} />
 
       <Section className="bg-surface/30 border-t border-border">
         <FadeUp>
