@@ -49,9 +49,19 @@ type FormErrors = Partial<Record<keyof z.infer<typeof formSchema>, string>>;
 
 function ContactPage() {
   useDocumentMeta({
-    title: "Contact — ZihoTech",
+    title: "Contact ZihoTech — Start an AI or Software Project",
     description:
-      "Tell us about your project. We respond within 24 hours, US/EU/UK timezones.",
+      "Tell us about your project. ZihoTech (Ziho Technologies) responds within 24 hours, US/EU/UK timezones. AI engineering, AIOps, web, mobile, and custom software.",
+    keywords: [
+      "Contact ZihoTech",
+      "Ziho Tech contact",
+      "hire AI engineers",
+      "hire AI development team",
+      "AI consulting contact",
+      "AIOps consultant",
+      "software development quote",
+    ],
+    path: "/contact",
   });
   const [errors, setErrors] = useState<FormErrors>({});
   const [submitted, setSubmitted] = useState(false);
