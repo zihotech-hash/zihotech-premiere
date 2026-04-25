@@ -1,6 +1,15 @@
 import { useEffect } from "react";
 import Lenis from "lenis";
 
+// Global handle so other components (e.g. modals) can pause/resume the
+// smooth-scroll engine. Lenis keeps animating wheel/touch events even when
+// `body { overflow: hidden }` is set, so we must explicitly stop it.
+declare global {
+  interface Window {
+    __lenis?: Lenis;
+  }
+}
+
 /**
  * Mounts a Lenis smooth-scroll instance with a heavy, weighty feel and
  * drives a velocity-based motion blur via the `--scroll-blur` CSS variable
@@ -40,6 +49,7 @@ export function SmoothScroll() {
       wheelMultiplier: 0.9,
       touchMultiplier: 1.8,
     });
+    window.__lenis = lenis;
 
     const root = document.documentElement;
 
@@ -93,6 +103,7 @@ export function SmoothScroll() {
     return () => {
       cancelAnimationFrame(raf);
       lenis.destroy();
+      if (window.__lenis === lenis) delete window.__lenis;
       root.style.removeProperty("--scroll-blur");
     };
   }, []);

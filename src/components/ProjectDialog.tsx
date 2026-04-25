@@ -9,17 +9,47 @@ type Props = {
 };
 
 export function ProjectDialog({ project, onClose }: Props) {
-  // Lock body scroll while open + handle Escape.
+  // Lock scroll while open + handle Escape.
+  // Lenis keeps running even when body has overflow:hidden, so we must stop
+  // it explicitly. We also freeze the body position so mobile browsers don't
+  // drag the page underneath when users swipe inside the modal.
   useEffect(() => {
     if (!project) return;
-    const prev = document.body.style.overflow;
-    document.body.style.overflow = "hidden";
+
+    const lenis = typeof window !== "undefined" ? window.__lenis : undefined;
+    lenis?.stop();
+
+    const scrollY = window.scrollY;
+    const body = document.body;
+    const prev = {
+      position: body.style.position,
+      top: body.style.top,
+      left: body.style.left,
+      right: body.style.right,
+      width: body.style.width,
+      overflow: body.style.overflow,
+    };
+    body.style.position = "fixed";
+    body.style.top = `-${scrollY}px`;
+    body.style.left = "0";
+    body.style.right = "0";
+    body.style.width = "100%";
+    body.style.overflow = "hidden";
+
     const onKey = (e: KeyboardEvent) => {
       if (e.key === "Escape") onClose();
     };
     window.addEventListener("keydown", onKey);
+
     return () => {
-      document.body.style.overflow = prev;
+      body.style.position = prev.position;
+      body.style.top = prev.top;
+      body.style.left = prev.left;
+      body.style.right = prev.right;
+      body.style.width = prev.width;
+      body.style.overflow = prev.overflow;
+      window.scrollTo(0, scrollY);
+      lenis?.start();
       window.removeEventListener("keydown", onKey);
     };
   }, [project, onClose]);
@@ -50,7 +80,9 @@ export function ProjectDialog({ project, onClose }: Props) {
             animate={{ opacity: 1, y: 0, scale: 1 }}
             exit={{ opacity: 0, y: 30, scale: 0.98 }}
             transition={{ duration: 0.32, ease: [0.22, 1, 0.36, 1] }}
-            className="relative w-full md:max-w-2xl max-h-[92vh] overflow-y-auto rounded-t-3xl md:rounded-3xl border border-border bg-surface shadow-2xl glow-strong"
+            className="relative w-full md:max-w-2xl max-h-[92vh] overflow-y-auto overscroll-contain rounded-t-3xl md:rounded-3xl border border-border bg-surface shadow-2xl glow-strong"
+            style={{ WebkitOverflowScrolling: "touch", touchAction: "pan-y" }}
+            onClick={(e) => e.stopPropagation()}
           >
             <div className="absolute inset-0 bg-mesh opacity-40 pointer-events-none rounded-t-3xl md:rounded-3xl" />
 
