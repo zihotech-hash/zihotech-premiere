@@ -4,8 +4,11 @@ import { motion, AnimatePresence } from "framer-motion";
 import { z } from "zod";
 import {
   Mail,
+  Phone,
   Calendar,
   Linkedin,
+  Instagram,
+  Facebook,
   Globe2,
   CheckCircle2,
   MessageCircle,
