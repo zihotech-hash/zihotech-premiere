@@ -10,31 +10,30 @@ type Props = {
 
 export function ProjectDialog({ project, onClose }: Props) {
   // Lock scroll while open + handle Escape.
-  // Lenis keeps running even when body has overflow:hidden, so we must stop
-  // it explicitly. We also freeze the body position so mobile browsers don't
-  // drag the page underneath when users swipe inside the modal.
+  // We stop Lenis (which keeps animating wheel/touch even with overflow:hidden)
+  // and lock html/body overflow WITHOUT repositioning the body — that way the
+  // page underneath keeps its current scroll position, so the centered modal
+  // appears in the user's current viewport instead of jumping to the top.
   useEffect(() => {
     if (!project) return;
 
     const lenis = typeof window !== "undefined" ? window.__lenis : undefined;
     lenis?.stop();
 
-    const scrollY = window.scrollY;
+    const html = document.documentElement;
     const body = document.body;
-    const prev = {
-      position: body.style.position,
-      top: body.style.top,
-      left: body.style.left,
-      right: body.style.right,
-      width: body.style.width,
-      overflow: body.style.overflow,
-    };
-    body.style.position = "fixed";
-    body.style.top = `-${scrollY}px`;
-    body.style.left = "0";
-    body.style.right = "0";
-    body.style.width = "100%";
+    const prevHtmlOverflow = html.style.overflow;
+    const prevBodyOverflow = body.style.overflow;
+    const prevBodyOverscroll = body.style.overscrollBehavior;
+    // Compensate for the disappearing scrollbar so layout doesn't shift.
+    const scrollbarGap = window.innerWidth - html.clientWidth;
+    const prevPaddingRight = body.style.paddingRight;
+    if (scrollbarGap > 0) {
+      body.style.paddingRight = `${scrollbarGap}px`;
+    }
+    html.style.overflow = "hidden";
     body.style.overflow = "hidden";
+    body.style.overscrollBehavior = "contain";
 
     const onKey = (e: KeyboardEvent) => {
       if (e.key === "Escape") onClose();
@@ -42,13 +41,10 @@ export function ProjectDialog({ project, onClose }: Props) {
     window.addEventListener("keydown", onKey);
 
     return () => {
-      body.style.position = prev.position;
-      body.style.top = prev.top;
-      body.style.left = prev.left;
-      body.style.right = prev.right;
-      body.style.width = prev.width;
-      body.style.overflow = prev.overflow;
-      window.scrollTo(0, scrollY);
+      html.style.overflow = prevHtmlOverflow;
+      body.style.overflow = prevBodyOverflow;
+      body.style.overscrollBehavior = prevBodyOverscroll;
+      body.style.paddingRight = prevPaddingRight;
       lenis?.start();
       window.removeEventListener("keydown", onKey);
     };
