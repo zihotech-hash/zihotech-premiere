@@ -75,9 +75,7 @@ function ServicesPage() {
                 <div className="inline-flex h-14 w-14 items-center justify-center rounded-2xl bg-brand-gradient/10 border border-primary/30 glow-primary">
                   <s.Icon className="h-6 w-6 text-secondary" />
                 </div>
-                <div className="text-xs uppercase tracking-[0.2em] text-muted-foreground md:mt-2">
-                  0{i + 1}
-                </div>
+              
               </div>
               <div>
                 <h2 className="text-2xl md:text-4xl font-bold tracking-tight">{s.title}</h2>

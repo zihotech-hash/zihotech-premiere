@@ -68,7 +68,7 @@ function WorkPage() {
           </FadeUp>
           <FadeUp delay={0.12}>
             <p className="mt-5 text-base md:text-lg text-muted-foreground max-w-2xl">
-              {CASE_STUDIES.length} engagements across AI, generative tools,
+              150+ engagements across AI, generative tools,
               marketplaces, healthcare, and Web3. Click any project to see the
               full case study.
             </p>

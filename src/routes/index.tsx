@@ -29,9 +29,9 @@ export const Route = createFileRoute("/")({
 
 const ROTATING_HEADLINES = [
   "Moves Your Business Forward.",
-  "Turns AI Hype Into Real Leverage.",
-  "Outlasts Your Next Funding Round.",
-  "Engineers Trust, One Release at a Time.",
+  "Turns AI Into Real Leverage.",
+  "Outlasts Your Next Raise.",
+  "Engineers Actually Trust.",
   "Ships in Weeks, Not Quarters.",
 ];
 
@@ -44,9 +44,9 @@ const WHY = [
 
 const PARTNER_STATS = [
   { Icon: Gauge, metric: "2–6 wks", label: "From kickoff to first production deploy" },
-  { Icon: Users2, metric: "100%", label: "Senior engineers, no junior shadow team" },
+  { Icon: Users2, metric: "100%", label: "Dedicated engineers on your project, not shared across accounts" },
   { Icon: ShieldCheck, metric: "24h", label: "Average response from your engineer, not a PM" },
-  { Icon: Sparkles, metric: "13+", label: "Live products shipped across AI, Web & Mobile" },
+  { Icon: Sparkles, metric: "150+", label: "Live products shipped across AI, Web & Mobile" },
 ];
 
 const TESTIMONIALS = [
@@ -172,23 +172,19 @@ function HomePage() {
             <h1 className="mt-6 text-4xl sm:text-5xl md:text-7xl font-extrabold leading-[1.05] tracking-tight max-w-5xl">
               We Build the Software That{" "}
               <br className="hidden md:block" />
-              <Typewriter
-                phrases={ROTATING_HEADLINES}
-                className="inline-block min-h-[1.2em]"
-              />
+              <span className="block min-h-[3em] sm:min-h-[2.5em] md:min-h-[1.25em]">
+                <Typewriter
+                  phrases={ROTATING_HEADLINES}
+                  className="inline"
+                />
+              </span>
             </h1>
           </FadeUp>
 
-          <FadeUp delay={0.12}>
-            <p className="mt-7 text-base md:text-xl text-muted-foreground max-w-2xl leading-relaxed">
-              ZihoTech delivers enterprise-grade AI, web, and mobile systems for
-              founders and operators who'd rather have one senior team that owns
-              the outcome — than three vendors fighting over the spec.
-            </p>
-          </FadeUp>
+
 
           <FadeUp delay={0.2}>
-            <div className="mt-10 flex flex-wrap items-center gap-3 md:gap-4">
+            <div className="mt-16 md:mt-32 flex flex-wrap items-center gap-3 md:gap-4">
               <CTAButton to="/contact" variant="primary">
                 Schedule a Discovery Call <ArrowRight className="h-4 w-4" />
               </CTAButton>
@@ -297,31 +293,55 @@ function HomePage() {
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, margin: "-60px" }}
-              transition={{ duration: 0.6, delay: i * 0.08, ease: [0.22, 1, 0.36, 1] }}
+              transition={{ duration: 0.55, delay: i * 0.08, ease: [0.22, 1, 0.36, 1] }}
               whileHover={{ y: -4 }}
-              className="group text-left rounded-2xl glass p-6 md:p-7 flex flex-col hover:border-primary/40 transition-all focus:outline-none focus:ring-2 focus:ring-secondary/50"
+              className="group relative flex flex-col text-left rounded-2xl glass p-6 md:p-8 hover:border-primary/40 transition-colors focus:outline-none focus:ring-2 focus:ring-secondary/50 w-full"
             >
-              <div className="flex items-center justify-between gap-2">
+              <div className="flex items-center justify-between gap-3 w-full">
                 <div className="flex flex-wrap items-center gap-2 text-[11px] uppercase tracking-[0.18em] text-muted-foreground">
                   <span className="rounded-full border border-border px-2.5 py-0.5">{c.industry}</span>
-                  <span className="rounded-full bg-secondary/15 border border-secondary/40 px-2.5 py-0.5 text-secondary font-semibold">
+                  <span
+                    className={
+                      c.type === "AI"
+                        ? "rounded-full bg-secondary/15 border border-secondary/40 px-2.5 py-0.5 text-secondary font-semibold"
+                        : "rounded-full bg-primary/10 border border-primary/30 px-2.5 py-0.5 text-secondary"
+                    }
+                  >
                     {c.type}
                   </span>
                 </div>
                 <Eye className="h-4 w-4 text-muted-foreground group-hover:text-secondary transition-colors shrink-0" />
               </div>
-              <h3 className="mt-5 text-2xl font-bold tracking-tight">{c.name}</h3>
-              <p className="mt-3 text-sm text-muted-foreground leading-relaxed flex-1">{c.problem}</p>
-              <p className="mt-5 text-base font-semibold text-gradient">{c.result}</p>
-              <div className="mt-5 flex flex-wrap gap-1.5">
+
+              <h3 className="mt-5 text-2xl md:text-[1.7rem] font-bold tracking-tight w-full">
+                {c.name}
+              </h3>
+              <p className="mt-3 text-sm text-muted-foreground leading-relaxed flex-1 w-full">
+                {c.problem}
+              </p>
+
+              <div className="mt-5 rounded-xl border border-secondary/20 bg-secondary/[0.04] px-4 py-3 w-full">
+                <p className="text-[10px] uppercase tracking-[0.2em] text-muted-foreground">
+                  Outcome
+                </p>
+                <p className="mt-1 text-sm md:text-base font-semibold text-gradient">
+                  {c.result}
+                </p>
+              </div>
+
+              <div className="mt-5 flex flex-wrap gap-1.5 w-full">
                 {c.stack.map((s) => (
-                  <span key={s} className="text-[11px] text-muted-foreground rounded-md bg-white/[0.04] border border-white/10 px-2 py-0.5">
+                  <span
+                    key={s}
+                    className="text-[11px] text-muted-foreground rounded-md bg-white/[0.04] border border-white/10 px-2 py-0.5"
+                  >
                     {s}
                   </span>
                 ))}
               </div>
-              <span className="mt-6 inline-flex items-center gap-1.5 text-sm font-medium text-secondary group-hover:gap-2.5 transition-all">
-                View case study <ArrowRight className="h-4 w-4" />
+
+              <span className="mt-5 inline-flex items-center gap-1.5 text-xs font-medium text-secondary group-hover:gap-2.5 transition-all">
+                View case study →
               </span>
             </motion.button>
           ))}
@@ -331,7 +351,7 @@ function HomePage() {
             to="/work"
             className="inline-flex items-center gap-1.5 text-sm font-medium text-secondary hover:gap-2.5 transition-all"
           >
-            See all {CASE_STUDIES.length} projects <ArrowRight className="h-4 w-4" />
+            Load More <ArrowRight className="h-4 w-4" />
           </Link>
         </div>
 

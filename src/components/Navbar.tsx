@@ -50,9 +50,9 @@ export function Navbar() {
             alt="ZihoTech logo"
             width={36}
             height={36}
-            className="h-8 w-8 md:h-9 md:w-9 object-contain transition-transform duration-300 group-hover:scale-105"
+            className="h-10 w-10 md:h-11 md:w-11 object-contain transition-transform duration-300 group-hover:scale-105"
           />
-          <span className="text-lg md:text-xl font-extrabold tracking-tight">
+          <span className="text-xl md:text-2xl font-extrabold tracking-tight">
             <span className="text-gradient">ZihoTech</span>
           </span>
         </Link>

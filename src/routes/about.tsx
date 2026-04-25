@@ -1,6 +1,6 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { motion } from "framer-motion";
-import { ArrowRight, Linkedin, Award, Rocket, Heart } from "lucide-react";
+import { ArrowRight, Award, Rocket, Heart } from "lucide-react";
 import { FadeUp, Section, SectionHeading } from "@/components/Section";
 import { CTAButton } from "@/components/CTAButton";
 import { useDocumentMeta } from "@/hooks/use-document-meta";
@@ -9,12 +9,7 @@ export const Route = createFileRoute("/about")({
   component: AboutPage,
 });
 
-// TODO: Replace with real team data
-const TEAM = [
-  { name: "Alex Morgan", title: "Founding Engineer", initials: "AM" },
-  { name: "Jordan Reyes", title: "AI Engineering Lead", initials: "JR" },
-  { name: "Sam Whitford", title: "Head of Product Engineering", initials: "SW" },
-];
+
 
 const STACK_GROUPS = [
   {
@@ -99,39 +94,6 @@ function AboutPage() {
         </FadeUp>
       </Section>
 
-      {/* Team */}
-      <Section className="bg-surface/30 border-y border-border">
-        <SectionHeading
-          eyebrow="Team"
-          title={<>The People <span className="text-gradient">Behind ZihoTech</span></>}
-          subtitle="Senior engineers who care about craft. We hire for taste, judgement, and ownership."
-        />
-        <div className="grid gap-6 md:grid-cols-3">
-          {TEAM.map((m, i) => (
-            <motion.div
-              key={m.name}
-              initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, margin: "-60px" }}
-              transition={{ duration: 0.6, delay: i * 0.08, ease: [0.22, 1, 0.36, 1] }}
-              className="rounded-2xl glass p-7 text-center hover:border-primary/40 transition-colors"
-            >
-              <div className="mx-auto h-20 w-20 rounded-full bg-brand-gradient grid place-items-center text-xl font-bold text-white glow-primary">
-                {m.initials}
-              </div>
-              <h3 className="mt-5 text-lg font-semibold">{m.name}</h3>
-              <p className="text-sm text-muted-foreground">{m.title}</p>
-              <a
-                href="#"
-                className="mt-4 inline-flex h-9 w-9 items-center justify-center rounded-lg glass hover:border-primary/40 transition-colors"
-                aria-label="LinkedIn"
-              >
-                <Linkedin className="h-4 w-4" />
-              </a>
-            </motion.div>
-          ))}
-        </div>
-      </Section>
 
       {/* Stack */}
       <Section>

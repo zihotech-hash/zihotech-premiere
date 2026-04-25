@@ -28,10 +28,9 @@ export function SmoothScroll() {
       hardwareConcurrency?: number;
     };
     const lowEnd =
-      window.matchMedia("(pointer: coarse)").matches ||
-      (typeof nav.deviceMemory === "number" && nav.deviceMemory <= 4) ||
+      (typeof nav.deviceMemory === "number" && nav.deviceMemory <= 2) ||
       (typeof nav.hardwareConcurrency === "number" &&
-        nav.hardwareConcurrency <= 4);
+        nav.hardwareConcurrency <= 2);
 
     const lenis = new Lenis({
       duration: 1.9,
@@ -39,7 +38,7 @@ export function SmoothScroll() {
       smoothWheel: true,
       lerp: 0.06,
       wheelMultiplier: 0.9,
-      touchMultiplier: 1.2,
+      touchMultiplier: 1.8,
     });
 
     const root = document.documentElement;

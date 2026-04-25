@@ -67,15 +67,22 @@ export function Typewriter({
     return () => clearTimeout(timer);
   }, [text, phase, phraseIdx, phrases, typeSpeed, deleteSpeed, holdMs, delayMs]);
 
+  const words = text.split(" ");
+  const lastWord = words.pop();
+  const restText = words.length > 0 ? words.join(" ") + " " : "";
+
   return (
     <span className={className}>
       <span className="text-gradient" aria-live="polite">
-        {text}
+        {restText}
+        <span className="whitespace-nowrap">
+          {lastWord}
+          <span
+            aria-hidden
+            className="inline-block w-[3px] md:w-[4px] h-[0.9em] -mb-[0.08em] ml-1 bg-secondary align-middle animate-pulse rounded-sm"
+          />
+        </span>
       </span>
-      <span
-        aria-hidden
-        className="inline-block w-[3px] md:w-[4px] h-[0.9em] -mb-[0.08em] ml-1 bg-secondary align-middle animate-pulse rounded-sm"
-      />
     </span>
   );
 }

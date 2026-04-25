@@ -60,6 +60,18 @@ export const CASE_STUDIES: CaseStudy[] = [
     url: "https://episourcenew.wpenginepowered.com/",
   },
 
+  {
+    slug: "ai-sales-chatbot",
+    name: "AI Sales Automation Chatbot",
+    industry: "Wholesale / AI Automation",
+    type: "AI",
+    problem:
+      "A wholesale client needed to eliminate manual sales rep workload across their entire order pipeline. We built an autonomous WhatsApp AI agent that handles customer inquiries, negotiates pricing, collects order and delivery details, processes orders, dispatches receipts, and logs all entries into the CRM — end to end.",
+    result: "Full sales pipeline automated — zero manual rep involvement",
+    stack: ["FastAPI", "OpenAI", "Twilio", "DigitalOcean"],
+    url: "#",
+  },
+
   // ── WEB / SOFTWARE ────────────────────────────────────────────────────────
   {
     slug: "devryte",
@@ -160,4 +172,38 @@ export const CASE_STUDIES: CaseStudy[] = [
     stack: ["React", "Solidity", "Ethers.js", "IPFS", "Node.js"],
     url: "https://marketplace.sapphirechain.group/",
   },
+  {
+    slug: "tayarishayari",
+    name: "TayariShayari",
+    industry: "EdTech",
+    type: "Web",
+    problem:
+      "A full-featured entry test preparation platform for Pakistani university aspirants. Covers NUST, FAST, LUMS, GIKI and more — with 10,000+ MCQs, timed mock tests, past papers, and aggregate calculators. Built to serve thousands of FSc students navigating Pakistan's competitive admissions landscape.",
+    result: "Thousands of students served across Pakistan's top entry tests",
+    stack: ["React", "Supabase", "PostgreSQL", "Vercel"],
+    url: "https://tayarishayari.com/",
+  },
+  {
+    slug: "streetapp",
+    name: "StreetApp",
+    industry: "C2C Marketplace / Mobile",
+    type: "Mobile",
+    problem:
+      "A landing page and marketing site for StreetApp — an AI-powered local marketplace mobile app available on iOS and Android. The site showcases the app's core AI listing generation feature, community-driven local selling model, and drives app store conversions. Clean, mobile-first single-page design.",
+    result: "Mobile-first marketing site driving iOS & Android installs",
+    stack: ["React", "TypeScript", "Vercel"],
+    url: "https://streetapp.com/",
+  },
+  {
+    slug: "juraab",
+    name: "Juraab Shop",
+    industry: "E-commerce",
+    type: "Web",
+    problem:
+      "A custom high-performance e-commerce platform engineered to outperform Shopify and WordPress on page load speed — achieving ~60% faster load times. Built for ad-driven traffic where milliseconds directly impact conversions, with lazy loading, cost-optimised data fetching, and a lean architecture from the ground up.",
+    result: "~60% faster load times vs. Shopify/WordPress baselines",
+    stack: ["React", "Node.js", "Supabase", "Vercel"],
+    url: "https://juraab.shop/",
+  },
 ];
+
