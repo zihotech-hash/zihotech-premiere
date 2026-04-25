@@ -1,5 +1,5 @@
 import { Link } from "@tanstack/react-router";
-import { Github, Linkedin, Twitter } from "lucide-react";
+import { Facebook, Instagram, Linkedin, Mail, Phone } from "lucide-react";
 import { SITE } from "@/lib/site";
 
 const NAV = [
@@ -44,11 +44,22 @@ export function Footer() {
 
           <div className="md:justify-self-end">
             <h4 className="text-sm font-semibold mb-4">Connect</h4>
-            <p className="text-sm text-muted-foreground mb-4">
-              <a href={`mailto:${SITE.email}`} className="hover:text-foreground transition-colors">
-                {SITE.email}
+            <div className="space-y-2.5 mb-5">
+              <a
+                href={`mailto:${SITE.email}`}
+                className="flex items-center gap-2 text-sm text-muted-foreground hover:text-foreground transition-colors"
+              >
+                <Mail className="h-3.5 w-3.5 shrink-0" />
+                <span className="break-all">{SITE.email}</span>
               </a>
-            </p>
+              <a
+                href={`tel:${SITE.phoneRaw}`}
+                className="flex items-center gap-2 text-sm text-muted-foreground hover:text-foreground transition-colors"
+              >
+                <Phone className="h-3.5 w-3.5 shrink-0" />
+                <span>{SITE.phone}</span>
+              </a>
+            </div>
             <div className="flex items-center gap-3">
               <a
                 href={SITE.social.linkedin}
@@ -60,22 +71,22 @@ export function Footer() {
                 <Linkedin className="h-4 w-4" />
               </a>
               <a
-                href={SITE.social.github}
-                aria-label="GitHub"
+                href={SITE.social.instagram}
+                aria-label="Instagram"
                 target="_blank"
                 rel="noreferrer"
                 className="h-9 w-9 grid place-items-center rounded-lg glass hover:border-primary/40 transition-colors"
               >
-                <Github className="h-4 w-4" />
+                <Instagram className="h-4 w-4" />
               </a>
               <a
-                href={SITE.social.twitter}
-                aria-label="Twitter"
+                href={SITE.social.facebook}
+                aria-label="Facebook"
                 target="_blank"
                 rel="noreferrer"
                 className="h-9 w-9 grid place-items-center rounded-lg glass hover:border-primary/40 transition-colors"
               >
-                <Twitter className="h-4 w-4" />
+                <Facebook className="h-4 w-4" />
               </a>
             </div>
           </div>

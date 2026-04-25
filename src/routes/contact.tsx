@@ -4,8 +4,11 @@ import { motion, AnimatePresence } from "framer-motion";
 import { z } from "zod";
 import {
   Mail,
+  Phone,
   Calendar,
   Linkedin,
+  Instagram,
+  Facebook,
   Globe2,
   CheckCircle2,
   MessageCircle,
@@ -231,16 +234,25 @@ function ContactPage() {
           {/* SIDE INFO */}
           <FadeUp delay={0.1}>
             <div className="space-y-5">
-              <div className="rounded-2xl glass p-6 md:p-7">
+              <div className="rounded-2xl glass p-6 md:p-7 space-y-3">
                 <h3 className="text-lg font-semibold">Or reach out directly</h3>
                 <a
                   href={`mailto:${SITE.email}`}
-                  className="mt-4 flex items-center gap-3 text-foreground hover:text-secondary transition-colors group"
+                  className="mt-2 flex items-center gap-3 text-foreground hover:text-secondary transition-colors group"
                 >
                   <span className="inline-flex h-10 w-10 items-center justify-center rounded-lg bg-brand-gradient/10 border border-primary/30">
                     <Mail className="h-4 w-4 text-secondary" />
                   </span>
-                  <span className="text-sm">{SITE.email}</span>
+                  <span className="text-sm break-all">{SITE.email}</span>
+                </a>
+                <a
+                  href={`tel:${SITE.phoneRaw}`}
+                  className="flex items-center gap-3 text-foreground hover:text-secondary transition-colors group"
+                >
+                  <span className="inline-flex h-10 w-10 items-center justify-center rounded-lg bg-brand-gradient/10 border border-primary/30">
+                    <Phone className="h-4 w-4 text-secondary" />
+                  </span>
+                  <span className="text-sm">{SITE.phone}</span>
                 </a>
               </div>
 
@@ -274,7 +286,29 @@ function ContactPage() {
                   <span className="inline-flex h-10 w-10 items-center justify-center rounded-lg bg-brand-gradient/10 border border-primary/30">
                     <Linkedin className="h-4 w-4 text-secondary" />
                   </span>
-                  <span className="text-sm">LinkedIn — Company Page</span>
+                  <span className="text-sm">LinkedIn — Ziho Technologies</span>
+                </a>
+                <a
+                  href={SITE.social.instagram}
+                  target="_blank"
+                  rel="noreferrer"
+                  className="flex items-center gap-3 text-foreground hover:text-secondary transition-colors"
+                >
+                  <span className="inline-flex h-10 w-10 items-center justify-center rounded-lg bg-brand-gradient/10 border border-primary/30">
+                    <Instagram className="h-4 w-4 text-secondary" />
+                  </span>
+                  <span className="text-sm">Instagram — @zihotech</span>
+                </a>
+                <a
+                  href={SITE.social.facebook}
+                  target="_blank"
+                  rel="noreferrer"
+                  className="flex items-center gap-3 text-foreground hover:text-secondary transition-colors"
+                >
+                  <span className="inline-flex h-10 w-10 items-center justify-center rounded-lg bg-brand-gradient/10 border border-primary/30">
+                    <Facebook className="h-4 w-4 text-secondary" />
+                  </span>
+                  <span className="text-sm">Facebook Page</span>
                 </a>
                 <a
                   href={SITE.social.whatsapp}

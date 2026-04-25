@@ -93,8 +93,8 @@ function HomePage() {
         email: SITE.email,
         sameAs: [
           SITE.social.linkedin,
-          SITE.social.github,
-          SITE.social.twitter,
+          SITE.social.instagram,
+          SITE.social.facebook,
         ],
         description:
           "ZihoTech is an AI-first software engineering studio building web, mobile, and AI products for businesses across the US, EU, and UK.",
