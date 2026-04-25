@@ -51,8 +51,8 @@ export function SmoothScroll() {
     //   SCALE  = px of blur per px of delta
     //   MAX    = blur cap in px
     //   DECAY  = lerp factor each frame (smaller = longer trail)
-    const MAX_BLUR   = lowEnd ? 0 : 8;
-    const SCALE      = 0.35;  // 20 px/frame → ~7 px blur (fast scroll)
+    const MAX_BLUR   = lowEnd ? 0 : 4;
+    const SCALE      = 0.15;  // 20 px/frame → ~3 px blur (fast scroll)
     const DECAY      = 0.10;  // trail lingers ~30 frames after stopping
 
     let raf         = 0;
