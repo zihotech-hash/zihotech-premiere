@@ -5,7 +5,7 @@ import { useState } from "react";
 import { FadeUp, Section } from "@/components/Section";
 import { CTAButton } from "@/components/CTAButton";
 import { CASE_STUDIES, type CaseStudy } from "@/lib/case-studies";
-import { ProjectDialog } from "@/components/ProjectDialog";
+import { ProjectDialog, type DialogAnchor } from "@/components/ProjectDialog";
 import { useDocumentMeta } from "@/hooks/use-document-meta";
 import { SITE } from "@/lib/site";
 
@@ -15,6 +15,22 @@ export const Route = createFileRoute("/work")({
 
 function WorkPage() {
   const [active, setActive] = useState<CaseStudy | null>(null);
+  const [anchor, setAnchor] = useState<DialogAnchor>(null);
+
+  // Capture pointer position so the dialog opens near the clicked card.
+  // For keyboard activation (no mouse coords), fall back to the card's center.
+  const openProject = (project: CaseStudy) =>
+    (e: React.MouseEvent<HTMLButtonElement>) => {
+      const native = e.nativeEvent as MouseEvent;
+      const hasPointer = native.clientX !== 0 || native.clientY !== 0;
+      if (hasPointer) {
+        setAnchor({ x: native.clientX, y: native.clientY });
+      } else {
+        const r = e.currentTarget.getBoundingClientRect();
+        setAnchor({ x: r.left + r.width / 2, y: r.top + r.height / 2 });
+      }
+      setActive(project);
+    };
 
   useDocumentMeta({
     title: "Our Work — AI, Web & Mobile Case Studies | ZihoTech",
@@ -82,7 +98,7 @@ function WorkPage() {
             <motion.button
               key={c.slug}
               type="button"
-              onClick={() => setActive(c)}
+              onClick={openProject(c)}
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, margin: "-60px" }}
@@ -141,7 +157,7 @@ function WorkPage() {
         </div>
       </Section>
 
-      <ProjectDialog project={active} onClose={() => setActive(null)} />
+      <ProjectDialog project={active} anchor={anchor} onClose={() => setActive(null)} />
 
       <Section className="bg-surface/30 border-t border-border">
         <FadeUp>

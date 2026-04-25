@@ -18,7 +18,7 @@ import { FadeUp, Section, SectionHeading } from "@/components/Section";
 import { CTAButton } from "@/components/CTAButton";
 import { Typewriter } from "@/components/Typewriter";
 import { CASE_STUDIES, type CaseStudy } from "@/lib/case-studies";
-import { ProjectDialog } from "@/components/ProjectDialog";
+import { ProjectDialog, type DialogAnchor } from "@/components/ProjectDialog";
 import { useDocumentMeta } from "@/hooks/use-document-meta";
 import { SITE } from "@/lib/site";
 import heroVideo from "../../public/hero-bg.mp4.asset.json";
@@ -75,6 +75,20 @@ const TESTIMONIALS = [
 
 function HomePage() {
   const [active, setActive] = useState<CaseStudy | null>(null);
+  const [anchor, setAnchor] = useState<DialogAnchor>(null);
+
+  const openProject = (project: CaseStudy) =>
+    (e: React.MouseEvent<HTMLButtonElement>) => {
+      const native = e.nativeEvent as MouseEvent;
+      const hasPointer = native.clientX !== 0 || native.clientY !== 0;
+      if (hasPointer) {
+        setAnchor({ x: native.clientX, y: native.clientY });
+      } else {
+        const r = e.currentTarget.getBoundingClientRect();
+        setAnchor({ x: r.left + r.width / 2, y: r.top + r.height / 2 });
+      }
+      setActive(project);
+    };
 
   useDocumentMeta({
     title: "ZihoTech — AI-First Software Engineering for Ambitious Businesses",
@@ -289,7 +303,7 @@ function HomePage() {
             <motion.button
               key={c.slug}
               type="button"
-              onClick={() => setActive(c)}
+              onClick={openProject(c)}
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, margin: "-60px" }}
@@ -355,7 +369,7 @@ function HomePage() {
           </Link>
         </div>
 
-        <ProjectDialog project={active} onClose={() => setActive(null)} />
+        <ProjectDialog project={active} anchor={anchor} onClose={() => setActive(null)} />
       </Section>
 
       {/* TESTIMONIALS */}
