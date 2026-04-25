@@ -53,10 +53,10 @@ export const SITE = {
     "software consulting UK",
   ],
   social: {
-    linkedin: "https://www.linkedin.com/company/zihotech",
-    github: "https://github.com/zihotech",
-    twitter: "https://x.com/zihotech",
-    whatsapp: "https://wa.me/10000000000",
+    linkedin: "https://www.linkedin.com/company/ziho-technologies/",
+    instagram: "https://www.instagram.com/zihotech?igsh=MWljcWxhZmcydXVzag%3D%3D&utm_source=qr",
+    facebook: "https://www.facebook.com/share/1CZbYrgHLh/?mibextid=wwXIfr",
+    whatsapp: "https://wa.me/923244793027",
     calendly: "https://calendly.com/zihotech/discovery",
   },
 };
