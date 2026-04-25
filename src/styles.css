@@ -232,15 +232,20 @@
    * frame by SmoothScroll based on Lenis scroll velocity. We use `will-change`
    * to promote the layer so the blur is GPU-composited and doesn't repaint
    * the surrounding layout each frame.
+   *
+   * The pseudo-element adds a cinematic vignette that intensifies with speed,
+   * giving a sense of forward motion as if the camera is pushing through.
    */
   .scroll-blur {
     filter: blur(var(--scroll-blur, 0px));
     will-change: filter;
+    transform: translateZ(0); /* force GPU layer */
   }
 
   @media (prefers-reduced-motion: reduce) {
     .scroll-blur {
       filter: none;
+      transition: none;
     }
   }
 

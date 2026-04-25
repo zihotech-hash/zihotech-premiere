@@ -23,9 +23,6 @@ export function SmoothScroll() {
     ).matches;
     if (reduceMotion) return;
 
-    // Heuristic for "low-end" — coarse pointer (most phones) or very limited
-    // hardware. Smooth scroll stays on, but velocity-blur is bypassed so the
-    // page stays responsive on cheap devices.
     const nav = navigator as Navigator & {
       deviceMemory?: number;
       hardwareConcurrency?: number;
@@ -36,8 +33,6 @@ export function SmoothScroll() {
       (typeof nav.hardwareConcurrency === "number" &&
         nav.hardwareConcurrency <= 4);
 
-    // Heavier scroll feel: longer duration + lower lerp = more inertia,
-    // like dragging a weighted page.
     const lenis = new Lenis({
       duration: 1.9,
       easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
@@ -49,44 +44,49 @@ export function SmoothScroll() {
 
     const root = document.documentElement;
 
-    let raf = 0;
+    // ── Blur engine ──────────────────────────────────────────────────────────
+    // Compute velocity from lenis.scroll delta per RAF frame — reliable
+    // regardless of what unit Lenis reports for its own velocity property.
+    //   delta  = px moved this frame  (typically 0–25 for smooth scroll)
+    //   SCALE  = px of blur per px of delta
+    //   MAX    = blur cap in px
+    //   DECAY  = lerp factor each frame (smaller = longer trail)
+    const MAX_BLUR   = lowEnd ? 0 : 8;
+    const SCALE      = 0.35;  // 20 px/frame → ~7 px blur (fast scroll)
+    const DECAY      = 0.10;  // trail lingers ~30 frames after stopping
+
+    let raf         = 0;
+    let prevScroll  = lenis.scroll;
     let currentBlur = 0;
-    let targetBlur = 0;
-    // Stronger cap than before, but still under the legibility cliff.
-    const MAX_BLUR = lowEnd ? 0 : 5;
-    const VELOCITY_SCALE = 0.0018; // ramps blur a bit faster
-    const DECAY = 0.16;            // slightly slower decay = lingering trail
 
     function loop(time: number) {
       lenis.raf(time);
 
       if (MAX_BLUR > 0) {
-        currentBlur += (targetBlur - currentBlur) * DECAY;
-        if (Math.abs(currentBlur - targetBlur) < 0.01 && targetBlur === 0) {
-          currentBlur = 0;
-        }
+        const currScroll = lenis.scroll;
+        const delta      = Math.abs(currScroll - prevScroll);
+        prevScroll       = currScroll;
+
+        const targetBlur = Math.min(MAX_BLUR, delta * SCALE);
+        currentBlur     += (targetBlur - currentBlur) * DECAY;
+
+        // Snap cleanly to zero — never hold a stale tiny value.
+        if (currentBlur < 0.02) currentBlur = 0;
+
         root.style.setProperty("--scroll-blur", `${currentBlur.toFixed(3)}px`);
       }
 
       raf = requestAnimationFrame(loop);
     }
-    raf = requestAnimationFrame(loop);
 
-    const onScroll = ({ velocity }: { velocity: number }) => {
-      if (MAX_BLUR === 0) return;
-      const speed = Math.abs(velocity);
-      targetBlur = Math.min(MAX_BLUR, speed * VELOCITY_SCALE);
-    };
+    // Let Lenis settle one tick before recording prevScroll so we don't
+    // spike the blur on initial mount.
+    raf = requestAnimationFrame((t) => {
+      lenis.raf(t);
+      prevScroll = lenis.scroll;
+      raf = requestAnimationFrame(loop);
+    });
 
-    const onSettle = () => {
-      targetBlur = 0;
-    };
-
-    lenis.on("scroll", onScroll);
-    // @ts-expect-error — Lenis emits "settle" but the type union is narrow
-    lenis.on("settle", onSettle);
-
-    // Ensure low-end devices never inherit a stale blur value.
     if (MAX_BLUR === 0) {
       root.style.setProperty("--scroll-blur", "0px");
     }

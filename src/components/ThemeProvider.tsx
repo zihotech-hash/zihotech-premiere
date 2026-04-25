@@ -20,15 +20,15 @@ const STORAGE_KEY = "zihotech-theme";
 const ThemeContext = createContext<ThemeContextValue | null>(null);
 
 function getInitialTheme(): Theme {
-  if (typeof window === "undefined") return "dark";
+  if (typeof window === "undefined") return "light";
   try {
     const stored = window.localStorage.getItem(STORAGE_KEY);
     if (stored === "light" || stored === "dark") return stored;
   } catch {
     /* ignore */
   }
-  const prefersLight = window.matchMedia("(prefers-color-scheme: light)").matches;
-  return prefersLight ? "light" : "dark";
+  // Default to light — user must explicitly enable dark mode.
+  return "light";
 }
 
 function applyTheme(theme: Theme) {
@@ -42,8 +42,8 @@ function applyTheme(theme: Theme) {
 }
 
 export function ThemeProvider({ children }: { children: React.ReactNode }) {
-  // Default to "dark" on SSR; sync from localStorage / OS pref on mount.
-  const [theme, setThemeState] = useState<Theme>("dark");
+  // Default to "light" on SSR; sync from localStorage on mount.
+  const [theme, setThemeState] = useState<Theme>("light");
 
   useEffect(() => {
     const initial = getInitialTheme();
@@ -77,8 +77,8 @@ export function useTheme(): ThemeContextValue {
   const ctx = useContext(ThemeContext);
   if (!ctx) {
     // Safe fallback so components don't crash if rendered outside the provider
-    // (e.g. during isolated tests). Theme stays "dark" and toggling is a no-op.
-    return { theme: "dark", setTheme: () => {}, toggleTheme: () => {} };
+    // (e.g. during isolated tests). Theme stays "light" and toggling is a no-op.
+    return { theme: "light", setTheme: () => {}, toggleTheme: () => {} };
   }
   return ctx;
 }
