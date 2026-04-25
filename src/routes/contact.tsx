@@ -2,6 +2,7 @@ import { createFileRoute } from "@tanstack/react-router";
 import { useState, type FormEvent } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { z } from "zod";
+import emailjs from "@emailjs/browser";
 import {
   Mail,
   Phone,
@@ -13,10 +14,15 @@ import {
   CheckCircle2,
   MessageCircle,
   ArrowRight,
+  Loader2,
 } from "lucide-react";
 import { FadeUp, Section } from "@/components/Section";
 import { SITE } from "@/lib/site";
 import { useDocumentMeta } from "@/hooks/use-document-meta";
+
+const EMAILJS_SERVICE_ID = "service_stg32xk";
+const EMAILJS_TEMPLATE_ID = "template_jjbsovh";
+const EMAILJS_PUBLIC_KEY = "2MxOvtcPFVvBmg3Sd";
 
 export const Route = createFileRoute("/contact")({
   component: ContactPage,
@@ -68,10 +74,13 @@ function ContactPage() {
   });
   const [errors, setErrors] = useState<FormErrors>({});
   const [submitted, setSubmitted] = useState(false);
+  const [sending, setSending] = useState(false);
+  const [sendError, setSendError] = useState<string | null>(null);
 
-  const onSubmit = (e: FormEvent<HTMLFormElement>) => {
+  const onSubmit = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    const fd = new FormData(e.currentTarget);
+    const form = e.currentTarget;
+    const fd = new FormData(form);
     const data = {
       name: String(fd.get("name") ?? ""),
       email: String(fd.get("email") ?? ""),
@@ -92,8 +101,34 @@ function ContactPage() {
       return;
     }
     setErrors({});
-    setSubmitted(true);
-    e.currentTarget.reset();
+    setSendError(null);
+    setSending(true);
+    try {
+      await emailjs.send(
+        EMAILJS_SERVICE_ID,
+        EMAILJS_TEMPLATE_ID,
+        {
+          name: parsed.data.name,
+          email: parsed.data.email,
+          company: parsed.data.company || "—",
+          projectType: parsed.data.projectType,
+          budget: parsed.data.budget,
+          message: parsed.data.message,
+          to_email: SITE.email,
+          reply_to: parsed.data.email,
+        },
+        { publicKey: EMAILJS_PUBLIC_KEY },
+      );
+      setSubmitted(true);
+      form.reset();
+    } catch (err) {
+      console.error("EmailJS send failed", err);
+      setSendError(
+        "Couldn't send your message. Please try again or email us directly.",
+      );
+    } finally {
+      setSending(false);
+    }
   };
 
   return (
