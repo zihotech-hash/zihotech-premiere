@@ -80,7 +80,9 @@ export function ProjectDialog({ project, onClose }: Props) {
             animate={{ opacity: 1, y: 0, scale: 1 }}
             exit={{ opacity: 0, y: 30, scale: 0.98 }}
             transition={{ duration: 0.32, ease: [0.22, 1, 0.36, 1] }}
-            className="relative w-full md:max-w-2xl max-h-[92vh] overflow-y-auto rounded-t-3xl md:rounded-3xl border border-border bg-surface shadow-2xl glow-strong"
+            className="relative w-full md:max-w-2xl max-h-[92vh] overflow-y-auto overscroll-contain rounded-t-3xl md:rounded-3xl border border-border bg-surface shadow-2xl glow-strong"
+            style={{ WebkitOverflowScrolling: "touch", touchAction: "pan-y" }}
+            onClick={(e) => e.stopPropagation()}
           >
             <div className="absolute inset-0 bg-mesh opacity-40 pointer-events-none rounded-t-3xl md:rounded-3xl" />
 
