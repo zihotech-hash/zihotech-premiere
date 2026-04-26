@@ -13,7 +13,7 @@ interface DocumentMeta {
 }
 
 const SITE_ORIGIN = "https://zihotech.com";
-const DEFAULT_IMAGE = "/logo.png";
+const DEFAULT_IMAGE = "/og/og-home.jpg";
 
 function setMetaByName(name: string, content: string) {
   let el = document.querySelector(`meta[name="${name}"]`) as HTMLMetaElement | null;
