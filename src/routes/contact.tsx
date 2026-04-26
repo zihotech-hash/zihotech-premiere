@@ -18,6 +18,7 @@ import {
 import { FadeUp, Section } from "@/components/Section";
 import { SITE } from "@/lib/site";
 import { useDocumentMeta } from "@/hooks/use-document-meta";
+import { breadcrumbJsonLd } from "@/lib/seo";
 
 const EMAILJS_SERVICE_ID = "service_stg32xk";
 const EMAILJS_TEMPLATE_ID = "template_jjbsovh";
