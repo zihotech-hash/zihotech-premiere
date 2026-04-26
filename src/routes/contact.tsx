@@ -5,7 +5,6 @@ import { z } from "zod";
 import emailjs from "@emailjs/browser";
 import {
   Mail,
-  Phone,
   Calendar,
   Linkedin,
   Instagram,
