@@ -185,6 +185,33 @@ function HomePage() {
             </h1>
           </FadeUp>
 
+      {/* FAQ */}
+      <Section className="bg-surface/30 border-y border-border">
+        <SectionHeading
+          eyebrow="FAQ"
+          title={<>Frequently Asked <span className="text-gradient">Questions</span></>}
+          subtitle="Quick answers about ZihoTech, our services, and how we work."
+        />
+        <div className="mx-auto max-w-3xl space-y-4">
+          {FAQS.map((f, i) => (
+            <motion.details
+              key={f.q}
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, margin: "-60px" }}
+              transition={{ duration: 0.5, delay: i * 0.05 }}
+              className="group rounded-2xl glass p-6 cursor-pointer hover:border-primary/40 transition-colors"
+            >
+              <summary className="flex items-center justify-between gap-4 text-base md:text-lg font-semibold list-none [&::-webkit-details-marker]:hidden">
+                <span>{f.q}</span>
+                <span className="shrink-0 text-secondary transition-transform group-open:rotate-45 text-2xl leading-none">+</span>
+              </summary>
+              <p className="mt-4 text-muted-foreground leading-relaxed">{f.a}</p>
+            </motion.details>
+          ))}
+        </div>
+      </Section>
+
 
           <FadeUp delay={0.2}>
             <div className="mt-16 md:mt-32 flex flex-wrap items-center gap-3 md:gap-4">
