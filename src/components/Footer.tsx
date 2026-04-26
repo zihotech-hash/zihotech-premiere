@@ -95,7 +95,7 @@ export function Footer() {
         </div>
 
         <div className="mt-12 pt-6 border-t border-border flex flex-col md:flex-row items-start md:items-center justify-between gap-2 text-xs text-muted-foreground">
-          <p>© {new Date().getFullYear()} ZihoTech. All rights reserved.</p>
+          <p>© 2021 ZihoTech. All rights reserved.</p>
           <p>Crafted with precision in US · EU · UK timezones.</p>
         </div>
       </div>
