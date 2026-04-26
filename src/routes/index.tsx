@@ -87,6 +87,8 @@ const FAQS: { q: string; a: string }[] = [
     a: "Yes. Our default stack includes React, Next.js, React Native, Tailwind, TypeScript, Python, FastAPI, Node.js, PostgreSQL, OpenAI, LangChain, and the major cloud providers (AWS, GCP, Vercel).",
   },
 ];
+
+function HomePage() {
   const [active, setActive] = useState<CaseStudy | null>(null);
   const [anchor, setAnchor] = useState<DialogAnchor>(null);
 
