@@ -42,7 +42,7 @@ function AboutPage() {
   useDocumentMeta({
     title: "About ZihoTech — Senior AI & Software Engineering Team",
     description:
-      "ZihoTech (Ziho Technologies) was founded to build software that actually works. A lean, senior team of AI engineers and product builders serving US, EU, and UK.",
+      "ZihoTech (Ziho Technologies) was founded in 2021 to build software that actually works. A lean, senior team of AI engineers and product builders serving US, EU, and UK.",
     keywords: [
       "About ZihoTech",
       "Ziho Tech team",
@@ -51,8 +51,32 @@ function AboutPage() {
       "senior software engineers",
       "AI consultancy team",
       "AIOps team",
+      ...SITE.keywords.slice(0, 12),
     ],
     path: "/about",
+    image: "/og/og-about.jpg",
+    jsonLd: [
+      {
+        "@context": "https://schema.org",
+        "@type": "AboutPage",
+        "@id": `${SITE.url}/about#webpage`,
+        url: `${SITE.url}/about`,
+        name: "About ZihoTech",
+        description:
+          "About Ziho Technologies — a senior AI and software engineering team.",
+        isPartOf: { "@id": `${SITE.url}/#website` },
+        publisher: { "@id": `${SITE.url}/#organization` },
+        primaryImageOfPage: {
+          "@type": "ImageObject",
+          url: `${SITE.url}/og/og-about.jpg`,
+        },
+        mainEntity: ORGANIZATION_JSONLD,
+      },
+      breadcrumbJsonLd([
+        { name: "Home", path: "/" },
+        { name: "About", path: "/about" },
+      ]),
+    ],
   });
   return (
     <>
