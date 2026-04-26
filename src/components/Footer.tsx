@@ -1,5 +1,5 @@
 import { Link } from "@tanstack/react-router";
-import { Facebook, Instagram, Linkedin, Mail, Phone } from "lucide-react";
+import { Facebook, Instagram, Linkedin, Mail, MessageCircle } from "lucide-react";
 import { SITE } from "@/lib/site";
 
 const NAV = [
@@ -53,11 +53,13 @@ export function Footer() {
                 <span className="break-all">{SITE.email}</span>
               </a>
               <a
-                href={`tel:${SITE.phoneRaw}`}
+                href={SITE.social.whatsapp}
+                target="_blank"
+                rel="noreferrer"
                 className="flex items-center gap-2 text-sm text-muted-foreground hover:text-foreground transition-colors"
               >
-                <Phone className="h-3.5 w-3.5 shrink-0" />
-                <span>{SITE.phone}</span>
+                <MessageCircle className="h-3.5 w-3.5 shrink-0" />
+                <span>WhatsApp</span>
               </a>
             </div>
             <div className="flex items-center gap-3">
