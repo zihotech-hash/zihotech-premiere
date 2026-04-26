@@ -13,6 +13,7 @@ import { FadeUp, Section, SectionHeading } from "@/components/Section";
 import { CTAButton } from "@/components/CTAButton";
 import { useDocumentMeta } from "@/hooks/use-document-meta";
 import { SITE } from "@/lib/site";
+import { breadcrumbJsonLd } from "@/lib/seo";
 
 export const Route = createFileRoute("/mission")({
   component: MissionPage,
