@@ -111,45 +111,25 @@ function HomePage() {
       "ZihoTech (Ziho Technologies) builds enterprise-grade AI, web, and mobile software for startups and businesses that need to ship fast. AI engineering, AIOps, RAG, LLM integration, and custom software — delivered by senior engineers across US, EU, and UK timezones.",
     keywords: SITE.keywords,
     path: "/",
+    image: "/og/og-home.jpg",
     jsonLd: [
-      {
-        "@context": "https://schema.org",
-        "@type": "Organization",
-        name: SITE.legalName,
-        alternateName: ["ZihoTech", "Ziho Tech", "Ziho"],
-        url: SITE.url,
-        logo: `${SITE.url}/logo.png`,
-        email: SITE.email,
-        sameAs: [
-          SITE.social.linkedin,
-          SITE.social.instagram,
-          SITE.social.facebook,
-        ],
-        description:
-          "ZihoTech is an AI-first software engineering studio building web, mobile, and AI products for businesses across the US, EU, and UK.",
-        areaServed: ["United States", "European Union", "United Kingdom"],
-        knowsAbout: [
-          "Artificial Intelligence",
-          "AIOps",
-          "Machine Learning",
-          "LLM Engineering",
-          "RAG",
-          "Software Engineering",
-          "Web Development",
-          "Mobile Development",
-        ],
-      },
+      ORGANIZATION_JSONLD,
       {
         "@context": "https://schema.org",
         "@type": "WebSite",
+        "@id": `${SITE.url}/#website`,
         name: "ZihoTech",
         url: SITE.url,
+        publisher: { "@id": `${SITE.url}/#organization` },
+        inLanguage: "en",
         potentialAction: {
           "@type": "SearchAction",
           target: `${SITE.url}/work?q={search_term_string}`,
           "query-input": "required name=search_term_string",
         },
       },
+      breadcrumbJsonLd([{ name: "Home", path: "/" }]),
+      faqJsonLd(FAQS),
     ],
   });
 
