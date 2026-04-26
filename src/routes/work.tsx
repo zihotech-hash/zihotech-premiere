@@ -50,20 +50,41 @@ function WorkPage() {
       ...SITE.keywords.slice(0, 15),
     ],
     path: "/work",
-    jsonLd: {
-      "@context": "https://schema.org",
-      "@type": "CollectionPage",
-      name: "ZihoTech Work",
-      url: `${SITE.url}/work`,
-      mainEntity: {
-        "@type": "ItemList",
-        itemListElement: CASE_STUDIES.map((c, i) => ({
-          "@type": "ListItem",
-          position: i + 1,
-          name: c.name,
-        })),
+    image: "/og/og-work.jpg",
+    jsonLd: [
+      {
+        "@context": "https://schema.org",
+        "@type": "CollectionPage",
+        "@id": `${SITE.url}/work#webpage`,
+        name: "ZihoTech Work",
+        description:
+          "Case studies of AI, web, mobile, and SaaS products built by ZihoTech.",
+        url: `${SITE.url}/work`,
+        isPartOf: { "@id": `${SITE.url}/#website` },
+        publisher: { "@id": `${SITE.url}/#organization` },
+        primaryImageOfPage: {
+          "@type": "ImageObject",
+          url: `${SITE.url}/og/og-work.jpg`,
+        },
+        mainEntity: {
+          "@type": "ItemList",
+          itemListElement: CASE_STUDIES.map((c, i) => ({
+            "@type": "ListItem",
+            position: i + 1,
+            name: c.name,
+            description: c.problem,
+          })),
+        },
       },
-    },
+      {
+        "@context": "https://schema.org",
+        "@type": "BreadcrumbList",
+        itemListElement: [
+          { "@type": "ListItem", position: 1, name: "Home", item: `${SITE.url}/` },
+          { "@type": "ListItem", position: 2, name: "Work", item: `${SITE.url}/work` },
+        ],
+      },
+    ],
   });
 
   return (

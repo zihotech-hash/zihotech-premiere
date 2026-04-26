@@ -26,15 +26,15 @@
     <meta property="og:type" content="website" />
     <meta property="og:site_name" content="ZihoTech" />
     <meta property="og:url" content="https://zihotech.com/" />
-    <meta property="og:image" content="https://zihotech.com/logo.png" />
+    <meta property="og:image" content="https://zihotech.com/og/og-home.jpg" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
     <meta property="og:locale" content="en_US" />
 
     <meta name="twitter:card" content="summary_large_image" />
-    <meta name="twitter:site" content="@ZihoTech" />
-    <meta name="twitter:creator" content="@ZihoTech" />
     <meta name="twitter:title" content="ZihoTech — AI-First Software Engineering" />
     <meta name="twitter:description" content="Enterprise-grade AI, web, and mobile software for businesses that need to ship at enterprise quality." />
-    <meta name="twitter:image" content="https://zihotech.com/logo.png" />
+    <meta name="twitter:image" content="https://zihotech.com/og/og-home.jpg" />
 
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="anonymous" />
@@ -46,20 +46,70 @@
     <script type="application/ld+json">
       {
         "@context": "https://schema.org",
-        "@type": "Organization",
+        "@type": ["Organization", "ProfessionalService"],
+        "@id": "https://zihotech.com/#organization",
         "name": "Ziho Technologies",
-        "alternateName": ["ZihoTech", "Ziho Tech", "Ziho"],
+        "alternateName": ["ZihoTech", "Ziho Tech", "Ziho", "Ziho Technologies"],
+        "legalName": "Ziho Technologies",
         "url": "https://zihotech.com",
-        "logo": "https://zihotech.com/logo.png",
-        "email": "hello@zihotech.com",
-        "description": "ZihoTech is an AI-first software engineering studio building web, mobile, and AI products for businesses across the US, EU, and UK.",
-        "areaServed": ["United States", "European Union", "United Kingdom"],
-        "knowsAbout": ["Artificial Intelligence", "AIOps", "Machine Learning", "LLM Engineering", "RAG", "Software Engineering", "Web Development", "Mobile Development"],
+        "logo": {
+          "@type": "ImageObject",
+          "url": "https://zihotech.com/logo.png",
+          "width": 512,
+          "height": 512
+        },
+        "image": "https://zihotech.com/logo.png",
+        "email": "info.zihotech@gmail.com",
+        "telephone": "+923244793027",
+        "foundingDate": "2021",
+        "slogan": "AI-first software engineering for ambitious businesses.",
+        "description": "ZihoTech (Ziho Technologies) is an AI-first software engineering company building enterprise-grade AI, web, and mobile products for businesses across the US, EU, and UK.",
+        "areaServed": [
+          { "@type": "Country", "name": "United States" },
+          { "@type": "Country", "name": "United Kingdom" },
+          { "@type": "Place", "name": "European Union" },
+          { "@type": "Place", "name": "Worldwide" }
+        ],
+        "address": {
+          "@type": "PostalAddress",
+          "addressCountry": "PK",
+          "addressRegion": "Punjab",
+          "addressLocality": "Lahore"
+        },
+        "contactPoint": [
+          {
+            "@type": "ContactPoint",
+            "contactType": "customer support",
+            "email": "info.zihotech@gmail.com",
+            "telephone": "+923244793027",
+            "availableLanguage": ["English"],
+            "areaServed": ["US", "GB", "EU", "Worldwide"]
+          }
+        ],
+        "knowsAbout": [
+          "Artificial Intelligence", "AIOps", "MLOps", "Machine Learning",
+          "LLM Engineering", "Retrieval Augmented Generation", "RAG",
+          "Generative AI", "AI Agents", "Software Engineering",
+          "Web Development", "Mobile Development", "SaaS Development",
+          "Custom Software Development", "Enterprise Software",
+          "React", "Next.js", "Python", "FastAPI", "Node.js", "LangChain"
+        ],
         "sameAs": [
-          "https://www.linkedin.com/company/zihotech",
-          "https://github.com/zihotech",
-          "https://x.com/zihotech"
+          "https://www.linkedin.com/company/ziho-technologies/",
+          "https://www.instagram.com/zihotech",
+          "https://www.facebook.com/share/1CZbYrgHLh/"
         ]
+      }
+    </script>
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "WebSite",
+        "@id": "https://zihotech.com/#website",
+        "url": "https://zihotech.com",
+        "name": "ZihoTech",
+        "publisher": { "@id": "https://zihotech.com/#organization" },
+        "inLanguage": "en"
       }
     </script>
 

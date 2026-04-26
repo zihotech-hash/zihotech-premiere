@@ -19,7 +19,8 @@ import { CTAButton } from "@/components/CTAButton";
 import { CASE_STUDIES, type CaseStudy } from "@/lib/case-studies";
 import { ProjectDialog, type DialogAnchor } from "@/components/ProjectDialog";
 import { useDocumentMeta } from "@/hooks/use-document-meta";
-import { SITE } from "@/lib/site";
+import { SITE, ORGANIZATION_JSONLD } from "@/lib/site";
+import { faqJsonLd, breadcrumbJsonLd } from "@/lib/seo";
 import heroVideo from "../../public/hero-bg.mp4.asset.json";
 
 export const Route = createFileRoute("/")({
@@ -64,6 +65,29 @@ const TESTIMONIALS = [
   },
 ];
 
+const FAQS: { q: string; a: string }[] = [
+  {
+    q: "What does ZihoTech (Ziho Technologies) do?",
+    a: "ZihoTech is an AI-first software engineering company that builds web, mobile, and AI products for businesses. Our services span AI engineering, AIOps, RAG and LLM integration, custom software, SaaS, and MVP development.",
+  },
+  {
+    q: "Where is ZihoTech based and which regions do you serve?",
+    a: "ZihoTech is headquartered in Lahore, Pakistan, and works async-first across US, EU, and UK timezones. We collaborate with founders and enterprises worldwide.",
+  },
+  {
+    q: "What is AIOps and do you provide AIOps services?",
+    a: "AIOps (Artificial Intelligence for IT Operations) uses ML and AI to automate and improve IT operations such as monitoring, incident response, and capacity planning. Yes, ZihoTech designs and ships production-grade AIOps and MLOps pipelines.",
+  },
+  {
+    q: "How fast can ZihoTech ship a project to production?",
+    a: "Most engagements go from kickoff to first production deploy in 2 to 6 weeks. Larger systems are broken into shippable milestones rather than one big-bang release.",
+  },
+  {
+    q: "Do you build with React, Next.js, Python and FastAPI?",
+    a: "Yes. Our default stack includes React, Next.js, React Native, Tailwind, TypeScript, Python, FastAPI, Node.js, PostgreSQL, OpenAI, LangChain, and the major cloud providers (AWS, GCP, Vercel).",
+  },
+];
+
 function HomePage() {
   const [active, setActive] = useState<CaseStudy | null>(null);
   const [anchor, setAnchor] = useState<DialogAnchor>(null);
@@ -87,45 +111,25 @@ function HomePage() {
       "ZihoTech (Ziho Technologies) builds enterprise-grade AI, web, and mobile software for startups and businesses that need to ship fast. AI engineering, AIOps, RAG, LLM integration, and custom software — delivered by senior engineers across US, EU, and UK timezones.",
     keywords: SITE.keywords,
     path: "/",
+    image: "/og/og-home.jpg",
     jsonLd: [
-      {
-        "@context": "https://schema.org",
-        "@type": "Organization",
-        name: SITE.legalName,
-        alternateName: ["ZihoTech", "Ziho Tech", "Ziho"],
-        url: SITE.url,
-        logo: `${SITE.url}/logo.png`,
-        email: SITE.email,
-        sameAs: [
-          SITE.social.linkedin,
-          SITE.social.instagram,
-          SITE.social.facebook,
-        ],
-        description:
-          "ZihoTech is an AI-first software engineering studio building web, mobile, and AI products for businesses across the US, EU, and UK.",
-        areaServed: ["United States", "European Union", "United Kingdom"],
-        knowsAbout: [
-          "Artificial Intelligence",
-          "AIOps",
-          "Machine Learning",
-          "LLM Engineering",
-          "RAG",
-          "Software Engineering",
-          "Web Development",
-          "Mobile Development",
-        ],
-      },
+      ORGANIZATION_JSONLD,
       {
         "@context": "https://schema.org",
         "@type": "WebSite",
+        "@id": `${SITE.url}/#website`,
         name: "ZihoTech",
         url: SITE.url,
+        publisher: { "@id": `${SITE.url}/#organization` },
+        inLanguage: "en",
         potentialAction: {
           "@type": "SearchAction",
           target: `${SITE.url}/work?q={search_term_string}`,
           "query-input": "required name=search_term_string",
         },
       },
+      breadcrumbJsonLd([{ name: "Home", path: "/" }]),
+      faqJsonLd(FAQS),
     ],
   });
 
@@ -180,8 +184,6 @@ function HomePage() {
               </span>
             </h1>
           </FadeUp>
-
-
 
           <FadeUp delay={0.2}>
             <div className="mt-16 md:mt-32 flex flex-wrap items-center gap-3 md:gap-4">
@@ -387,6 +389,33 @@ function HomePage() {
                 </p>
               </div>
             </motion.div>
+          ))}
+        </div>
+      </Section>
+
+      {/* FAQ */}
+      <Section className="bg-surface/30 border-y border-border">
+        <SectionHeading
+          eyebrow="FAQ"
+          title={<>Frequently Asked <span className="text-gradient">Questions</span></>}
+          subtitle="Quick answers about ZihoTech, our services, and how we work."
+        />
+        <div className="mx-auto max-w-3xl space-y-4">
+          {FAQS.map((f, i) => (
+            <motion.details
+              key={f.q}
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, margin: "-60px" }}
+              transition={{ duration: 0.5, delay: i * 0.05 }}
+              className="group rounded-2xl glass p-6 cursor-pointer hover:border-primary/40 transition-colors"
+            >
+              <summary className="flex items-center justify-between gap-4 text-base md:text-lg font-semibold list-none [&::-webkit-details-marker]:hidden">
+                <span>{f.q}</span>
+                <span className="shrink-0 text-secondary transition-transform group-open:rotate-45 text-2xl leading-none">+</span>
+              </summary>
+              <p className="mt-4 text-muted-foreground leading-relaxed">{f.a}</p>
+            </motion.details>
           ))}
         </div>
       </Section>

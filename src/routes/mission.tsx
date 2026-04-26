@@ -13,6 +13,7 @@ import { FadeUp, Section, SectionHeading } from "@/components/Section";
 import { CTAButton } from "@/components/CTAButton";
 import { useDocumentMeta } from "@/hooks/use-document-meta";
 import { SITE } from "@/lib/site";
+import { breadcrumbJsonLd } from "@/lib/seo";
 
 export const Route = createFileRoute("/mission")({
   component: MissionPage,
@@ -62,18 +63,29 @@ function MissionPage() {
       ...SITE.keywords.slice(0, 12),
     ],
     path: "/mission",
-    jsonLd: {
-      "@context": "https://schema.org",
-      "@type": "AboutPage",
-      name: "Our Mission — ZihoTech",
-      url: `${SITE.url}/mission`,
-      mainEntity: {
-        "@type": "Organization",
-        name: SITE.legalName,
-        alternateName: ["ZihoTech", "Ziho Tech", "Ziho"],
-        url: SITE.url,
+    image: "/og/og-mission.jpg",
+    jsonLd: [
+      {
+        "@context": "https://schema.org",
+        "@type": "AboutPage",
+        "@id": `${SITE.url}/mission#webpage`,
+        name: "Our Mission — ZihoTech",
+        url: `${SITE.url}/mission`,
+        description:
+          "ZihoTech's mission: AI-first software with engineering rigor and product-team speed.",
+        isPartOf: { "@id": `${SITE.url}/#website` },
+        publisher: { "@id": `${SITE.url}/#organization` },
+        primaryImageOfPage: {
+          "@type": "ImageObject",
+          url: `${SITE.url}/og/og-mission.jpg`,
+        },
+        mainEntity: { "@id": `${SITE.url}/#organization` },
       },
-    },
+      breadcrumbJsonLd([
+        { name: "Home", path: "/" },
+        { name: "Mission", path: "/mission" },
+      ]),
+    ],
   });
 
   return (
