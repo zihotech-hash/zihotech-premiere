@@ -65,7 +65,28 @@ const TESTIMONIALS = [
   },
 ];
 
-function HomePage() {
+const FAQS: { q: string; a: string }[] = [
+  {
+    q: "What does ZihoTech (Ziho Technologies) do?",
+    a: "ZihoTech is an AI-first software engineering company that builds web, mobile, and AI products for businesses. Our services span AI engineering, AIOps, RAG and LLM integration, custom software, SaaS, and MVP development.",
+  },
+  {
+    q: "Where is ZihoTech based and which regions do you serve?",
+    a: "ZihoTech is headquartered in Lahore, Pakistan, and works async-first across US, EU, and UK timezones. We collaborate with founders and enterprises worldwide.",
+  },
+  {
+    q: "What is AIOps and do you provide AIOps services?",
+    a: "AIOps (Artificial Intelligence for IT Operations) uses ML and AI to automate and improve IT operations such as monitoring, incident response, and capacity planning. Yes, ZihoTech designs and ships production-grade AIOps and MLOps pipelines.",
+  },
+  {
+    q: "How fast can ZihoTech ship a project to production?",
+    a: "Most engagements go from kickoff to first production deploy in 2 to 6 weeks. Larger systems are broken into shippable milestones rather than one big-bang release.",
+  },
+  {
+    q: "Do you build with React, Next.js, Python and FastAPI?",
+    a: "Yes. Our default stack includes React, Next.js, React Native, Tailwind, TypeScript, Python, FastAPI, Node.js, PostgreSQL, OpenAI, LangChain, and the major cloud providers (AWS, GCP, Vercel).",
+  },
+];
   const [active, setActive] = useState<CaseStudy | null>(null);
   const [anchor, setAnchor] = useState<DialogAnchor>(null);
 
