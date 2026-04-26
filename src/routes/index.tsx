@@ -19,7 +19,8 @@ import { CTAButton } from "@/components/CTAButton";
 import { CASE_STUDIES, type CaseStudy } from "@/lib/case-studies";
 import { ProjectDialog, type DialogAnchor } from "@/components/ProjectDialog";
 import { useDocumentMeta } from "@/hooks/use-document-meta";
-import { SITE } from "@/lib/site";
+import { SITE, ORGANIZATION_JSONLD } from "@/lib/site";
+import { faqJsonLd, breadcrumbJsonLd } from "@/lib/seo";
 import heroVideo from "../../public/hero-bg.mp4.asset.json";
 
 export const Route = createFileRoute("/")({
