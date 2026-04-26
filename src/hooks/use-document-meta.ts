@@ -87,17 +87,23 @@ export function useDocumentMeta({
     setMetaByName("twitter:image", fullImg);
     setMetaByName("twitter:card", "summary_large_image");
 
-    let scriptEl: HTMLScriptElement | null = null;
+    const scriptEls: HTMLScriptElement[] = [];
     if (jsonLd) {
-      scriptEl = document.createElement("script");
-      scriptEl.type = "application/ld+json";
-      scriptEl.text = JSON.stringify(jsonLd);
-      scriptEl.setAttribute("data-route-jsonld", "true");
-      document.head.appendChild(scriptEl);
+      const items = Array.isArray(jsonLd) ? jsonLd : [jsonLd];
+      for (const item of items) {
+        const el = document.createElement("script");
+        el.type = "application/ld+json";
+        el.text = JSON.stringify(item);
+        el.setAttribute("data-route-jsonld", "true");
+        document.head.appendChild(el);
+        scriptEls.push(el);
+      }
     }
 
     return () => {
-      if (scriptEl && scriptEl.parentNode) scriptEl.parentNode.removeChild(scriptEl);
+      for (const el of scriptEls) {
+        if (el.parentNode) el.parentNode.removeChild(el);
+      }
     };
   }, [title, description, keywords?.join("|"), path, image, JSON.stringify(jsonLd)]);
 }
