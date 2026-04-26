@@ -4,6 +4,8 @@ import { ArrowRight, Award, Rocket, Heart } from "lucide-react";
 import { FadeUp, Section, SectionHeading } from "@/components/Section";
 import { CTAButton } from "@/components/CTAButton";
 import { useDocumentMeta } from "@/hooks/use-document-meta";
+import { SITE, ORGANIZATION_JSONLD } from "@/lib/site";
+import { breadcrumbJsonLd, webPageJsonLd } from "@/lib/seo";
 
 export const Route = createFileRoute("/about")({
   component: AboutPage,
