@@ -41,6 +41,8 @@ export function SmoothScroll() {
       (typeof nav.hardwareConcurrency === "number" &&
         nav.hardwareConcurrency <= 2);
 
+    void lowEnd; // motion blur removed; Lenis runs the same on all devices
+
     const lenis = new Lenis({
       duration: 1.9,
       easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
@@ -52,53 +54,15 @@ export function SmoothScroll() {
     window.__lenis = lenis;
 
     const root = document.documentElement;
+    // Ensure no stale blur is left from any previous build.
+    root.style.setProperty("--scroll-blur", "0px");
 
-    // ── Blur engine ──────────────────────────────────────────────────────────
-    // Compute velocity from lenis.scroll delta per RAF frame — reliable
-    // regardless of what unit Lenis reports for its own velocity property.
-    //   delta  = px moved this frame  (typically 0–25 for smooth scroll)
-    //   SCALE  = px of blur per px of delta
-    //   MAX    = blur cap in px
-    //   DECAY  = lerp factor each frame (smaller = longer trail)
-    const MAX_BLUR   = lowEnd ? 0 : 4;
-    const SCALE      = 0.15;  // 20 px/frame → ~3 px blur (fast scroll)
-    const DECAY      = 0.10;  // trail lingers ~30 frames after stopping
-
-    let raf         = 0;
-    let prevScroll  = lenis.scroll;
-    let currentBlur = 0;
-
+    let raf = 0;
     function loop(time: number) {
       lenis.raf(time);
-
-      if (MAX_BLUR > 0) {
-        const currScroll = lenis.scroll;
-        const delta      = Math.abs(currScroll - prevScroll);
-        prevScroll       = currScroll;
-
-        const targetBlur = Math.min(MAX_BLUR, delta * SCALE);
-        currentBlur     += (targetBlur - currentBlur) * DECAY;
-
-        // Snap cleanly to zero — never hold a stale tiny value.
-        if (currentBlur < 0.02) currentBlur = 0;
-
-        root.style.setProperty("--scroll-blur", `${currentBlur.toFixed(3)}px`);
-      }
-
       raf = requestAnimationFrame(loop);
     }
-
-    // Let Lenis settle one tick before recording prevScroll so we don't
-    // spike the blur on initial mount.
-    raf = requestAnimationFrame((t) => {
-      lenis.raf(t);
-      prevScroll = lenis.scroll;
-      raf = requestAnimationFrame(loop);
-    });
-
-    if (MAX_BLUR === 0) {
-      root.style.setProperty("--scroll-blur", "0px");
-    }
+    raf = requestAnimationFrame(loop);
 
     return () => {
       cancelAnimationFrame(raf);
