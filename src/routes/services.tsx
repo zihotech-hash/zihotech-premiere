@@ -5,6 +5,8 @@ import { FadeUp, Section, SectionHeading } from "@/components/Section";
 import { CTAButton } from "@/components/CTAButton";
 import { SERVICES } from "@/components/ServiceCard";
 import { useDocumentMeta } from "@/hooks/use-document-meta";
+import { SITE } from "@/lib/site";
+import { breadcrumbJsonLd, webPageJsonLd, serviceJsonLd } from "@/lib/seo";
 
 export const Route = createFileRoute("/services")({
   component: ServicesPage,
@@ -32,8 +34,31 @@ function ServicesPage() {
       "Python AI",
       "FastAPI",
       "enterprise software services",
+      ...SITE.keywords.slice(0, 12),
     ],
     path: "/services",
+    image: "/og/og-services.jpg",
+    jsonLd: [
+      webPageJsonLd({
+        path: "/services",
+        name: "Services — AI, Web, Mobile & Custom Software | ZihoTech",
+        description:
+          "Web, mobile, AI development, AI engineering, AIOps, and custom software — built by senior engineers at ZihoTech.",
+        image: "/og/og-services.jpg",
+      }),
+      breadcrumbJsonLd([
+        { name: "Home", path: "/" },
+        { name: "Services", path: "/services" },
+      ]),
+      ...SERVICES.map((s) =>
+        serviceJsonLd({
+          name: s.title,
+          description: s.long,
+          serviceType: s.title,
+          path: "/services",
+        }),
+      ),
+    ],
   });
   return (
     <>
