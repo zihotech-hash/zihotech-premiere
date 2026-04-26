@@ -3,7 +3,6 @@ export const SITE = {
   legalName: "Ziho Technologies",
   tagline: "AI-first software engineering for ambitious businesses.",
   email: "info.zihotech@gmail.com",
-  phone: "+92 324 4793027",
   phoneRaw: "+923244793027",
   url: "https://zihotech.com",
   logo: "/logo.png",

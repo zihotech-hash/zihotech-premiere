@@ -5,7 +5,6 @@ import { z } from "zod";
 import emailjs from "@emailjs/browser";
 import {
   Mail,
-  Phone,
   Calendar,
   Linkedin,
   Instagram,
@@ -294,13 +293,15 @@ function ContactPage() {
                   <span className="text-sm break-all">{SITE.email}</span>
                 </a>
                 <a
-                  href={`tel:${SITE.phoneRaw}`}
+                  href={SITE.social.whatsapp}
+                  target="_blank"
+                  rel="noreferrer"
                   className="flex items-center gap-3 text-foreground hover:text-secondary transition-colors group"
                 >
                   <span className="inline-flex h-10 w-10 items-center justify-center rounded-lg bg-brand-gradient/10 border border-primary/30">
-                    <Phone className="h-4 w-4 text-secondary" />
+                    <MessageCircle className="h-4 w-4 text-secondary" />
                   </span>
-                  <span className="text-sm">{SITE.phone}</span>
+                  <span className="text-sm">Chat on WhatsApp</span>
                 </a>
               </div>
 

@@ -16,7 +16,6 @@ import {
 } from "lucide-react";
 import { FadeUp, Section, SectionHeading } from "@/components/Section";
 import { CTAButton } from "@/components/CTAButton";
-import { Typewriter } from "@/components/Typewriter";
 import { CASE_STUDIES, type CaseStudy } from "@/lib/case-studies";
 import { ProjectDialog, type DialogAnchor } from "@/components/ProjectDialog";
 import { useDocumentMeta } from "@/hooks/use-document-meta";
@@ -26,14 +25,6 @@ import heroVideo from "../../public/hero-bg.mp4.asset.json";
 export const Route = createFileRoute("/")({
   component: HomePage,
 });
-
-const ROTATING_HEADLINES = [
-  "Moves Your Business Forward.",
-  "Turns AI Into Real Leverage.",
-  "Outlasts Your Next Raise.",
-  "Engineers Actually Trust.",
-  "Ships in Weeks, Not Quarters.",
-];
 
 const WHY = [
   { title: "Timezone-Flexible", text: "We work async and sync across US, EU, and UK timezones — no missed handoffs.", Icon: Globe2 },
@@ -184,13 +175,8 @@ function HomePage() {
 
           <FadeUp delay={0.05}>
             <h1 className="mt-6 text-4xl sm:text-5xl md:text-7xl font-extrabold leading-[1.05] tracking-tight max-w-5xl">
-              We Build the Software That{" "}
-              <br className="hidden md:block" />
-              <span className="block min-h-[3em] sm:min-h-[2.5em] md:min-h-[1.25em]">
-                <Typewriter
-                  phrases={ROTATING_HEADLINES}
-                  className="inline"
-                />
+              <span className="text-gradient">
+                We build the software that transforms ideas into intelligent digital products.
               </span>
             </h1>
           </FadeUp>
