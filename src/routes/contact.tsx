@@ -71,6 +71,28 @@ function ContactPage() {
       "software development quote",
     ],
     path: "/contact",
+    image: "/og/og-contact.jpg",
+    jsonLd: [
+      {
+        "@context": "https://schema.org",
+        "@type": "ContactPage",
+        "@id": `${SITE.url}/contact#webpage`,
+        name: "Contact ZihoTech",
+        url: `${SITE.url}/contact`,
+        description:
+          "Get in touch with ZihoTech. We respond within 24 hours across US, EU, and UK timezones.",
+        isPartOf: { "@id": `${SITE.url}/#website` },
+        publisher: { "@id": `${SITE.url}/#organization` },
+        primaryImageOfPage: {
+          "@type": "ImageObject",
+          url: `${SITE.url}/og/og-contact.jpg`,
+        },
+      },
+      breadcrumbJsonLd([
+        { name: "Home", path: "/" },
+        { name: "Contact", path: "/contact" },
+      ]),
+    ],
   });
   const [errors, setErrors] = useState<FormErrors>({});
   const [submitted, setSubmitted] = useState(false);
