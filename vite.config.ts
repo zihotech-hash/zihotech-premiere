@@ -6,7 +6,7 @@ import tsconfigPaths from "vite-tsconfig-paths";
 import path from "node:path";
 import fs from "node:fs/promises";
 
-const SITE_URL = "https://zihotech.com";
+const SITE_URL = "https://zihotechnologies.com";
 
 interface RouteSeo {
   path: string;

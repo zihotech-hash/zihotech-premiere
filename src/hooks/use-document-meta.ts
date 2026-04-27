@@ -12,7 +12,7 @@ interface DocumentMeta {
   jsonLd?: Record<string, unknown> | Record<string, unknown>[];
 }
 
-const SITE_ORIGIN = "https://zihotech.com";
+const SITE_ORIGIN = "https://zihotechnologies.com";
 const DEFAULT_IMAGE = "/og/og-home.jpg";
 
 function setMetaByName(name: string, content: string) {
