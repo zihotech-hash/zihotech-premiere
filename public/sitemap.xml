@@ -2,46 +2,46 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
         xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
-    <loc>https://zihotech.com/</loc>
+    <loc>https://zihotechnologies.com/</loc>
     <lastmod>2026-04-26</lastmod>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
-    <xhtml:link rel="alternate" hreflang="en" href="https://zihotech.com/" />
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://zihotech.com/" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://zihotechnologies.com/" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://zihotechnologies.com/" />
   </url>
   <url>
-    <loc>https://zihotech.com/services</loc>
+    <loc>https://zihotechnologies.com/services</loc>
     <lastmod>2026-04-26</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
-    <xhtml:link rel="alternate" hreflang="en" href="https://zihotech.com/services" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://zihotechnologies.com/services" />
   </url>
   <url>
-    <loc>https://zihotech.com/work</loc>
+    <loc>https://zihotechnologies.com/work</loc>
     <lastmod>2026-04-26</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
-    <xhtml:link rel="alternate" hreflang="en" href="https://zihotech.com/work" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://zihotechnologies.com/work" />
   </url>
   <url>
-    <loc>https://zihotech.com/mission</loc>
+    <loc>https://zihotechnologies.com/mission</loc>
     <lastmod>2026-04-26</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
-    <xhtml:link rel="alternate" hreflang="en" href="https://zihotech.com/mission" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://zihotechnologies.com/mission" />
   </url>
   <url>
-    <loc>https://zihotech.com/about</loc>
+    <loc>https://zihotechnologies.com/about</loc>
     <lastmod>2026-04-26</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
-    <xhtml:link rel="alternate" hreflang="en" href="https://zihotech.com/about" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://zihotechnologies.com/about" />
   </url>
   <url>
-    <loc>https://zihotech.com/contact</loc>
+    <loc>https://zihotechnologies.com/contact</loc>
     <lastmod>2026-04-26</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
-    <xhtml:link rel="alternate" hreflang="en" href="https://zihotech.com/contact" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://zihotechnologies.com/contact" />
   </url>
 </urlset>

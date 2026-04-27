@@ -18,8 +18,8 @@ export function Footer() {
         <div className="grid gap-10 md:grid-cols-3">
           <div>
             <Link to="/" className="flex items-center gap-2.5">
-              <img src="/logo.png" alt="ZihoTech logo" width={36} height={36} className="h-9 w-9 object-contain" />
-              <span className="text-2xl font-extrabold text-gradient">ZihoTech</span>
+              <img src="/logo.png" alt="Ziho Technologies logo" width={36} height={36} className="h-9 w-9 object-contain" />
+              <span className="text-2xl font-extrabold text-gradient">Ziho Technologies</span>
             </Link>
             <p className="mt-4 text-sm text-muted-foreground max-w-xs leading-relaxed">
               {SITE.tagline}
@@ -95,7 +95,7 @@ export function Footer() {
         </div>
 
         <div className="mt-12 pt-6 border-t border-border flex flex-col md:flex-row items-start md:items-center justify-between gap-2 text-xs text-muted-foreground">
-          <p>© 2021 ZihoTech. All rights reserved.</p>
+          <p>© 2021 Ziho Technologies. All rights reserved.</p>
           <p>Crafted with precision in US · EU · UK timezones.</p>
         </div>
       </div>

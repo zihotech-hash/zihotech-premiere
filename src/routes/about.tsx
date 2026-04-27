@@ -86,7 +86,7 @@ function AboutPage() {
         <div className="relative mx-auto max-w-7xl px-6 md:px-10 scroll-blur">
           <FadeUp>
             <span className="inline-flex items-center gap-2 rounded-full glass px-3.5 py-1.5 text-xs font-medium text-secondary">
-              About ZihoTech
+              About Ziho Technologies
             </span>
           </FadeUp>
           <FadeUp delay={0.05}>
@@ -96,7 +96,7 @@ function AboutPage() {
           </FadeUp>
           <FadeUp delay={0.12}>
             <p className="mt-7 text-base md:text-lg text-muted-foreground max-w-2xl leading-relaxed">
-              ZihoTech was founded with one goal — to build software that actually works.
+              Ziho Technologies was founded with one goal — to build software that actually works.
               We're a lean, senior team of engineers and AI specialists who've shipped
               products across industries. We don't do bloated retainers or endless meetings.
               We build, we ship, we deliver.

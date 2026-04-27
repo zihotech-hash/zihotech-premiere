@@ -4,7 +4,7 @@ export const SITE = {
   tagline: "AI-first software engineering for ambitious businesses.",
   email: "info.zihotech@gmail.com",
   phoneRaw: "+923244793027",
-  url: "https://zihotech.com",
+  url: "https://zihotechnologies.com",
   logo: "/logo.png",
   founded: "2021",
   /**

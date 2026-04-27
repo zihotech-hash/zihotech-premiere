@@ -1,4 +1,4 @@
-# https://zihotech.com robots.txt
+# https://zihotechnologies.com robots.txt
 User-agent: *
 Allow: /
 
@@ -43,5 +43,5 @@ Allow: /
 User-agent: Google-Extended
 Allow: /
 
-Sitemap: https://zihotech.com/sitemap.xml
-Host: https://zihotech.com
+Sitemap: https://zihotechnologies.com/sitemap.xml
+Host: https://zihotechnologies.com

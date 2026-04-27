@@ -44,7 +44,7 @@ const PARTNER_STATS = [
 const TESTIMONIALS = [
   {
     quote:
-      "ZihoTech shipped what our previous agency promised in six months — in six weeks. Genuinely senior engineers.",
+      "Ziho Technologies shipped what our previous agency promised in six months — in six weeks. Genuinely senior engineers.",
     name: "Sarah Lindqvist",
     title: "VP of Product",
     company: "NorthArc Logistics",
@@ -252,7 +252,7 @@ function HomePage() {
       {/* WHY */}
       <Section>
         <SectionHeading
-          eyebrow="Why ZihoTech"
+          eyebrow="Why Ziho Technologies"
           title={<>Why Businesses <span className="text-gradient">Choose Us</span></>}
         />
         <div className="grid gap-5 md:gap-6 md:grid-cols-2">
@@ -398,7 +398,7 @@ function HomePage() {
         <SectionHeading
           eyebrow="FAQ"
           title={<>Frequently Asked <span className="text-gradient">Questions</span></>}
-          subtitle="Quick answers about ZihoTech, our services, and how we work."
+          subtitle="Quick answers about Ziho Technologies, our services, and how we work."
         />
         <div className="mx-auto max-w-3xl space-y-4">
           {FAQS.map((f, i) => (
