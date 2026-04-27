@@ -116,7 +116,7 @@ function MissionPage() {
           <FadeUp delay={0.12}>
             <p className="mx-auto mt-7 max-w-2xl text-base md:text-xl text-muted-foreground leading-relaxed">
               We build software that actually moves a business — not pitch decks dressed
-              as products. ZihoTech exists to give serious operators a senior engineering
+              as products. Ziho Technologies exists to give serious operators a senior engineering
               team that ships AI-powered systems with the same rigor as a category leader.
             </p>
           </FadeUp>
