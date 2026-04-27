@@ -43,17 +43,17 @@ export function Navbar() {
           : "bg-transparent",
       )}
     >
-      <nav className="mx-auto flex max-w-7xl items-center justify-between px-6 md:px-10 h-16 md:h-20">
-        <Link to="/" className="flex items-center gap-2.5 group" aria-label="ZihoTech home">
+      <nav className="mx-auto flex max-w-7xl items-center justify-between gap-3 px-4 sm:px-6 md:px-10 h-16 md:h-20">
+        <Link to="/" className="flex items-center gap-2 group min-w-0" aria-label="Ziho Technologies home">
           <img
             src="/logo.png"
-            alt="ZihoTech logo"
+            alt="Ziho Technologies logo"
             width={36}
             height={36}
-            className="h-10 w-10 md:h-11 md:w-11 object-contain transition-transform duration-300 group-hover:scale-105"
+            className="h-9 w-9 md:h-11 md:w-11 object-contain shrink-0 transition-transform duration-300 group-hover:scale-105"
           />
-          <span className="text-xl md:text-2xl font-extrabold tracking-tight">
-            <span className="text-gradient">ZihoTech</span>
+          <span className="text-base sm:text-lg md:text-2xl font-extrabold tracking-tight truncate">
+            <span className="text-gradient">Ziho Technologies</span>
           </span>
         </Link>
 
@@ -101,11 +101,11 @@ export function Navbar() {
           </Link>
         </div>
 
-        <div className="md:hidden flex items-center gap-2">
+        <div className="md:hidden flex items-center gap-1 shrink-0">
           <ThemeToggle />
           <button
             aria-label="Toggle menu"
-            className="text-foreground p-2 -mr-2"
+            className="text-foreground p-2 -mr-1"
             onClick={() => setOpen((v) => !v)}
           >
             {open ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
