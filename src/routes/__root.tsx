@@ -4,6 +4,7 @@ import { useEffect } from "react";
 import { Navbar } from "@/components/Navbar";
 import { Footer } from "@/components/Footer";
 import { SmoothScroll } from "@/components/SmoothScroll";
+import { ScrollToTop } from "@/components/ScrollToTop";
 import { ThemeProvider } from "@/components/ThemeProvider";
 
 function NotFoundComponent() {
@@ -53,6 +54,7 @@ function RootComponent() {
   return (
     <ThemeProvider>
       <SmoothScroll />
+      <ScrollToTop />
       <Navbar />
       <main className="min-h-screen pt-16 md:pt-20">
         <Outlet />
