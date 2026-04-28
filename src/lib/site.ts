@@ -166,7 +166,7 @@ export const ROUTE_SEO: RouteSeo[] = [
   {
     path: "/",
     title:
-      "ZihoTech — AI-First Software Engineering | Ziho Technologies",
+      "Ziho Technologies (ZihoTech) — AI-First Software Engineering",
     description:
       "ZihoTech (Ziho Technologies) builds enterprise-grade AI, web, and mobile software. AI engineering, AIOps, RAG, LLM integration, and custom software for the US, EU, and UK.",
     image: "/og/og-home.jpg",
@@ -174,35 +174,35 @@ export const ROUTE_SEO: RouteSeo[] = [
   {
     path: "/services",
     title:
-      "Services — AI, Web, Mobile & Custom Software | ZihoTech",
+      "Ziho Technologies — Services: AI, Web, Mobile & Custom Software",
     description:
       "Web, mobile, AI development, AI engineering, AIOps, and custom software — built by senior engineers at ZihoTech (Ziho Technologies).",
     image: "/og/og-services.jpg",
   },
   {
     path: "/work",
-    title: "Our Work — AI, Web & Mobile Case Studies | ZihoTech",
+    title: "Ziho Technologies — Our Work: AI, Web & Mobile Case Studies",
     description:
       "Real ZihoTech client work — AI platforms, generative tools, marketplaces, EdTech, healthcare, Web3 and SaaS. Live URLs, real outcomes.",
     image: "/og/og-work.jpg",
   },
   {
     path: "/mission",
-    title: "Our Mission — ZihoTech",
+    title: "Ziho Technologies — Our Mission",
     description:
       "Why ZihoTech exists: building AI-first software with the rigor of an engineering org and the speed of a product team.",
     image: "/og/og-mission.jpg",
   },
   {
     path: "/about",
-    title: "About ZihoTech — Senior AI & Software Engineering Team",
+    title: "About Ziho Technologies (ZihoTech) — Senior AI & Software Engineering Team",
     description:
       "ZihoTech (Ziho Technologies) was founded in 2021 to build software that actually works. A lean, senior team of AI engineers serving the US, EU, and UK.",
     image: "/og/og-about.jpg",
   },
   {
     path: "/contact",
-    title: "Contact ZihoTech — Start an AI or Software Project",
+    title: "Contact Ziho Technologies (ZihoTech) — Start an AI or Software Project",
     description:
       "Tell us about your project. ZihoTech responds within 24 hours, US/EU/UK timezones. AI engineering, AIOps, web, mobile, and custom software.",
     image: "/og/og-contact.jpg",

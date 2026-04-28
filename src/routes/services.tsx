@@ -14,7 +14,7 @@ export const Route = createFileRoute("/services")({
 
 function ServicesPage() {
   useDocumentMeta({
-    title: "Services — AI, Web, Mobile & Custom Software | ZihoTech",
+    title: "Ziho Technologies — Services: AI, Web, Mobile & Custom Software",
     description:
       "Web, mobile, AI development, AI engineering, AIOps, and custom software — built by senior engineers at ZihoTech (Ziho Technologies).",
     keywords: [
@@ -41,7 +41,7 @@ function ServicesPage() {
     jsonLd: [
       webPageJsonLd({
         path: "/services",
-        name: "Services — AI, Web, Mobile & Custom Software | ZihoTech",
+        name: "Ziho Technologies — Services: AI, Web, Mobile & Custom Software",
         description:
           "Web, mobile, AI development, AI engineering, AIOps, and custom software — built by senior engineers at ZihoTech.",
         image: "/og/og-services.jpg",
