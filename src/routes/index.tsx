@@ -106,7 +106,7 @@ function HomePage() {
     };
 
   useDocumentMeta({
-    title: "ZihoTech — AI-First Software Engineering for Ambitious Businesses",
+    title: "Ziho Technologies (ZihoTech) — AI-First Software Engineering for Ambitious Businesses",
     description:
       "ZihoTech (Ziho Technologies) builds enterprise-grade AI, web, and mobile software for startups and businesses that need to ship fast. AI engineering, AIOps, RAG, LLM integration, and custom software — delivered by senior engineers across US, EU, and UK timezones.",
     keywords: SITE.keywords,

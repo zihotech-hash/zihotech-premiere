@@ -44,7 +44,7 @@ function useDefaultDocumentMeta() {
   useEffect(() => {
     if (typeof document === "undefined") return;
     if (!document.title) {
-      document.title = "ZihoTech — Enterprise Software & AI Engineering";
+      document.title = "Ziho Technologies — Enterprise Software & AI Engineering";
     }
   }, []);
 }
