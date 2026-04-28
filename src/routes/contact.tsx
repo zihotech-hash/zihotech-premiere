@@ -58,7 +58,7 @@ type FormErrors = Partial<Record<keyof z.infer<typeof formSchema>, string>>;
 
 function ContactPage() {
   useDocumentMeta({
-    title: "Contact ZihoTech — Start an AI or Software Project",
+    title: "Contact Ziho Technologies (ZihoTech) — Start an AI or Software Project",
     description:
       "Tell us about your project. ZihoTech (Ziho Technologies) responds within 24 hours, US/EU/UK timezones. AI engineering, AIOps, web, mobile, and custom software.",
     keywords: [

@@ -33,7 +33,7 @@ function WorkPage() {
     };
 
   useDocumentMeta({
-    title: "Our Work — AI, Web & Mobile Case Studies | ZihoTech",
+    title: "Ziho Technologies — Our Work: AI, Web & Mobile Case Studies",
     description:
       "Real ZihoTech client work — AI platforms, generative tools, marketplaces, EdTech, healthcare, Web3 and SaaS. Live URLs, real outcomes.",
     keywords: [

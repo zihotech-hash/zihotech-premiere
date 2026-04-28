@@ -51,7 +51,7 @@ const COMMITMENTS = [
 
 function MissionPage() {
   useDocumentMeta({
-    title: "Our Mission — ZihoTech",
+    title: "Ziho Technologies — Our Mission",
     description:
       "Why ZihoTech exists: building AI-first software with the rigor of an engineering org and the speed of a product team. Our principles, commitments, and the line we won't cross.",
     keywords: [
@@ -69,7 +69,7 @@ function MissionPage() {
         "@context": "https://schema.org",
         "@type": "AboutPage",
         "@id": `${SITE.url}/mission#webpage`,
-        name: "Our Mission — ZihoTech",
+        name: "Ziho Technologies — Our Mission",
         url: `${SITE.url}/mission`,
         description:
           "ZihoTech's mission: AI-first software with engineering rigor and product-team speed.",
