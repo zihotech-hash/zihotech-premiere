@@ -35,13 +35,19 @@ export function SmoothScroll() {
     const nav = navigator as Navigator & {
       deviceMemory?: number;
       hardwareConcurrency?: number;
+      connection?: { saveData?: boolean; effectiveType?: string };
     };
     const lowEnd =
-      (typeof nav.deviceMemory === "number" && nav.deviceMemory <= 2) ||
+      (typeof nav.deviceMemory === "number" && nav.deviceMemory <= 4) ||
       (typeof nav.hardwareConcurrency === "number" &&
-        nav.hardwareConcurrency <= 2);
+        nav.hardwareConcurrency <= 4) ||
+      nav.connection?.saveData === true ||
+      /2g|3g/.test(nav.connection?.effectiveType ?? "");
 
-    void lowEnd; // motion blur removed; Lenis runs the same on all devices
+    // On low-end devices, skip Lenis entirely. Native scrolling is far
+    // cheaper than running a rAF loop + transform every frame, which is
+    // the single biggest cause of jank on cheap phones / old laptops.
+    if (lowEnd) return;
 
     const lenis = new Lenis({
       duration: 1.9,

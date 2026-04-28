@@ -2,7 +2,7 @@ export const SITE = {
   name: "ZihoTech",
   legalName: "Ziho Technologies",
   tagline: "AI-first software engineering for ambitious businesses.",
-  email: "info.zihotech@gmail.com",
+  email: "info@zihotechnologies.com",
   phoneRaw: "+923244793027",
   url: "https://zihotechnologies.com",
   logo: "/logo.png",
