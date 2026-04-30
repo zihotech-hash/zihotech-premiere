@@ -5,7 +5,7 @@ import { z } from "zod";
 import emailjs from "@emailjs/browser";
 import {
   Mail,
-  Calendar,
+  
   Linkedin,
   Instagram,
   Facebook,
@@ -327,27 +327,6 @@ function ContactPage() {
                   <span className="text-sm">Chat on WhatsApp</span>
                 </a>
               </div>
-
-              <a
-                href={SITE.social.calendly}
-                target="_blank"
-                rel="noreferrer"
-                className="block rounded-2xl glass p-6 md:p-7 hover:border-primary/40 transition-all hover:-translate-y-0.5 group"
-              >
-                <div className="flex items-center gap-3">
-                  <span className="inline-flex h-10 w-10 items-center justify-center rounded-lg bg-brand-gradient/10 border border-primary/30">
-                    <Calendar className="h-4 w-4 text-secondary" />
-                  </span>
-                  <div>
-                    <p className="text-sm font-semibold">Prefer to talk?</p>
-                    <p className="text-xs text-muted-foreground">Book a 30-min discovery call</p>
-                  </div>
-                </div>
-                <span className="mt-5 inline-flex items-center gap-1.5 text-sm text-secondary group-hover:gap-2.5 transition-all">
-                  Open Calendly <ArrowRight className="h-4 w-4" />
-                </span>
-              </a>
-
               <div className="rounded-2xl glass p-6 md:p-7 space-y-4">
                 <a
                   href={SITE.social.linkedin}
